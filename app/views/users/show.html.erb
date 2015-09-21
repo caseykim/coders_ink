@@ -1,0 +1,12 @@
+<div>
+  <h2><%= @user.username %></h2>
+  <%= @user.email %>
+  <%= @user.avatar %>
+</div>
+
+<% @user.tattoos.each do |tattoo| %>
+  <div class="tattoo">
+    <%= tattoo.url %>
+    <%= tattoo.title %>
+  </div>
+<% end %>

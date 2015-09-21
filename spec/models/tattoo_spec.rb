@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe Tattoo, type: :model do
 
   context 'tattoos' do
-    let!(:tattoo) { FactoryGirl.create(:tattoo, title: 'Badass Celtic Armband') }
+    let!(:tattoo) do
+     FactoryGirl.create(:tattoo, title: 'Badass Celtic Armband')
+    end
 
     it "should have a user assigned to it" do
       expect(tattoo.user_id).to eq(1)

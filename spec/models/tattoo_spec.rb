@@ -4,7 +4,7 @@ RSpec.describe Tattoo, type: :model do
 
   context 'tattoos' do
     let!(:tattoo) do
-     FactoryGirl.create(:tattoo, title: 'Badass Celtic Armband')
+      FactoryGirl.create(:tattoo, title: 'Badass Celtic Armband')
     end
 
     it "should have a user assigned to it" do

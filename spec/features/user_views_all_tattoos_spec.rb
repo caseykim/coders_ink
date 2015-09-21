@@ -1,4 +1,4 @@
-require ''
+require 'rails_helper'
 
 feature "User views all tattoos", %(
   As a user

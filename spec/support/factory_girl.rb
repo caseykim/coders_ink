@@ -7,4 +7,10 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :tattoo do
+    title "Badass Celtic Armband"
+    description "Great"
+    url "http://www.google.com"
+    user_id 1
+  end
 end

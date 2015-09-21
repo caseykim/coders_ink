@@ -8,4 +8,10 @@ FactoryGirl.define do
     sequence(:username) { |n| "user#{n}" }
   end
 
+  factory :tattoo do
+    sequence(:title) { |n| "Badass Celtic Armband Number #{n}" }
+    description "Great"
+    url "http://www.google.com"
+    user_id 1
+  end
 end

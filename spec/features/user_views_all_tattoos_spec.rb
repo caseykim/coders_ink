@@ -10,4 +10,17 @@ feature "User views all tattoos", %(
   [ ] I must see the tattoos listed in order, most recently posted first
 ) do
 
+  scenario 'visitor views tattoos' do
+    tattoo = FactoryGirl.create(:tattoo)
+    tattoo2 = FactoryGirl.create(:tattoo)
+    tattoo3 = FactoryGirl.create(:tattoo)
+    tattoo4 = FactoryGirl.create(:tattoo)
+
+    visit tattoos_path
+    expect(page).to have_content(tattoo.title)
+    expect(page).to have_content(tattoo2.title)
+    expect(page).to have_content(tattoo3.title)
+    expect(page).to have_content(tattoo4.title)
+  end
+
 end

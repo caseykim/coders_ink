@@ -20,7 +20,8 @@ RSpec.describe Tattoo, type: :model do
     end
 
     it "should have a url" do
-      expect(tattoo.url).to eq("http://www.clipartbest.com/cliparts/4T9/xK9/4T9xK9eTE.jpeg")
+      url = "http://www.clipartbest.com/cliparts/4T9/xK9/4T9xK9eTE.jpeg"
+      expect(tattoo.url).to eq(url)
     end
   end
 end

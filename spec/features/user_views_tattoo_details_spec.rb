@@ -19,6 +19,6 @@ feature "User views a specific tattoo", %(
     visit tattoo_path(tattoo)
     expect(page).to have_content('Dagron')
     expect(page).to have_content('Great')
-    expect(page).to have_css("img[src*='http://www.clipartbest.com/cliparts/4T9/xK9/4T9xK9eTE.jpeg']")
+    expect(page).to have_css("img[src*='#{tattoo.url}']")
   end
 end

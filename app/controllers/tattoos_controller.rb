@@ -1,5 +1,5 @@
 class TattoosController < ApplicationController
   def index
-    @tattoos = Tattoo.all
+    @tattoos = Tattoo.order(id: :desc)
   end
 end

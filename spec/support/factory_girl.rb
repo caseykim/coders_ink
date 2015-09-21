@@ -10,7 +10,7 @@ FactoryGirl.define do
   factory :tattoo do
     sequence(:title) { |n| "Badass Celtic Armband Number #{n}" }
     description "Great"
-    url "http://www.google.com"
+    url "http://www.clipartbest.com/cliparts/4T9/xK9/4T9xK9eTE.jpeg"
     user_id 1
   end
 end

@@ -1,6 +1,6 @@
 <h1>Tattoos</h1>
 <ul>
   <% @tattoos.each do |tattoo| %>
-    <li><%= tattoo.title %></li>
+    <li><%= link_to tattoo.title, tattoo_path(tattoo) %></li>
   <% end %>
 </ul>

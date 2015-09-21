@@ -1,0 +1,5 @@
+<h1><%= @tattoo.title %></h1>
+<%= image_tag(@tattoo.url, class: "tattoo_image") %>
+<% if @tattoo.description.present? %>
+  <h3><%= @tattoo.description %></h3>
+<% end %>

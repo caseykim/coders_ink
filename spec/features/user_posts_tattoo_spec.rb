@@ -51,9 +51,7 @@ So that I could get feedback from others
   end
 
   scenario 'visitor submits a form while not signed in' do
-    visit tattoos_path
-
-    click_link "Add A Tattoo"
+    visit new_tattoo_path
 
     fill_in "Title", with: "Brand New Tattoo"
     fill_in "Description", with: "Hurt a lot!"

@@ -24,7 +24,7 @@ feature 'user deletes account', %(
     click_link 'Account Settings'
     click_button 'Cancel my account'
 
-    expect(page).to have_content('Your account has been successfully cancelled.')
+    expect(page).to have_content('account has been successfully cancelled.')
     visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password

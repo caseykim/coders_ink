@@ -6,6 +6,12 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
     sequence(:username) { |n| "user#{n}" }
+
+    factory :user_with_tattoos do
+      after(:create) do |user|
+        5.times { create(:tattoo, user: user) }
+      end
+    end
   end
 
   factory :tattoo do

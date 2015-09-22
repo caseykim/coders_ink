@@ -82,11 +82,13 @@ feature "user edits account settings", %(
     click_link 'Sign Out'
     visit edit_user_registration_path
 
-    expect(page).to have_content('You need to sign in or sign up before continuing.')
+    expect(page).to have_content('need to sign in or sign up before continuing')
   end
 
   scenario "user cannot edit other users' information" do
-    other_user = FactoryGirl.create(:user, password: "blurryblah", password_confirmation: "blurryblah")
+    other_password = "blurryblah"
+    other_user = FactoryGirl.create(:user,
+      password: other_password, password_confirmation: other_password)
     visit edit_user_registration_path
     fill_in 'Username', with: 'bubblyblob'
     fill_in 'Email', with: other_user.email

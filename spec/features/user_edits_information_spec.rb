@@ -1,5 +1,4 @@
 require 'rails_helper'
-include Warden::Test::Helpers
 
 feature "user edits account settings", %(
   As a user
@@ -12,6 +11,8 @@ feature "user edits account settings", %(
   [x] I must be able to change my email
   [x] I must be able to change my avatar
   [x] I must see the link to account settings when I am signed in
+  [x] I must not be able to change information unless authenticated
+  [x] I must not be able to change other users' information
 ) do
 
   let(:user) { FactoryGirl.create(:user) }
@@ -75,6 +76,25 @@ feature "user edits account settings", %(
     expect(page).to_not have_content(old_username)
     expect(page).to have_content(new_username)
     expect(page).to have_content(new_avatar)
+  end
+
+  scenario 'user cannot access users#edit if not authenticated' do
+    click_link 'Sign Out'
+    visit edit_user_registration_path
+
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
+  end
+
+  scenario "user cannot edit other users' information" do
+    other_user = FactoryGirl.create(:user, password: "blurryblah", password_confirmation: "blurryblah")
+    visit edit_user_registration_path
+    fill_in 'Username', with: 'bubblyblob'
+    fill_in 'Email', with: other_user.email
+    fill_in 'Current password', with: other_user.password
+    click_button 'Update'
+
+    expect(page).to have_content('Email has already been taken')
+    expect(page).to have_content('Current password is invalid')
   end
 
 end

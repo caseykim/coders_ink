@@ -16,15 +16,17 @@ feature "User views all users", %(
   scenario "user sees other users' usernames" do
     visit users_path
 
-    expect(page).to have_content(User.first.username)
-    expect(page).to have_content(User.last.username)
+    User.all.each do |user|
+      expect(page).to have_content(user.username)
+    end
   end
 
   scenario "user sees other users' avatars" do
     visit users_path
 
-    expect(page).to have_content(User.first.avatar)
-    expect(page).to have_content(User.last.avatar)
+    User.all.each do |user|
+      expect(page).to have_content(user.avatar)
+    end
   end
 
 end

@@ -1,4 +1,6 @@
 <h1>Tattoos</h1>
+
+<h4><%= link_to "Add A Tattoo", new_tattoo_path %></h4>
 <ul>
   <% @tattoos.each do |tattoo| %>
     <li><%= link_to tattoo.title, tattoo_path(tattoo) %></li>

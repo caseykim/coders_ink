@@ -1,0 +1,16 @@
+<h1>Submit Your Tattoo!</h1>
+
+<div class="small-8 medium-6 large-4 tattoo_form">
+  <%= form_for @tattoo do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <br>
+    <%= f.label :url, "Image URL" %>
+    <%= f.text_field :url %>
+    <br>
+    <%= f.submit "Submit", class: "button small success" %>
+  <% end %>
+</div>

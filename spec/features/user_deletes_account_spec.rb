@@ -38,5 +38,5 @@ feature 'user deletes account', %(
     visit edit_user_registration_path
 
     expect(page).to have_content('You need to sign in or sign up before continuing.')
-  en
+  end
 end

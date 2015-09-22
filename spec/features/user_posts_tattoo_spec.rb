@@ -24,6 +24,8 @@ So that I could get feedback from others
     fill_in "Title", with: "Brand New Tattoo"
     fill_in "Description", with: "Hurt a lot!"
     fill_in "Image URL", with: "https://pbs.twimg.com/media/BQMYIh2CMAAmGqp.jpg"
+    fill_in "Studio", with: "Lucky's"
+    fill_in "Artist", with: "Jill Fink"
 
     click_button "Submit"
 
@@ -31,6 +33,8 @@ So that I could get feedback from others
     expect(page).to have_content('Brand New Tattoo')
     expect(page).to have_content('Hurt a lot!')
     expect(page).to have_css(urlcss)
+    expect(page).to have_content("Lucky's")
+    expect(page).to have_content("Jill Fink")
   end
 
   scenario 'visitor submits a blank form' do

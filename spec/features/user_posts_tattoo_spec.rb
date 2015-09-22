@@ -15,16 +15,7 @@ So that I could get feedback from others
 
   scenario 'visitor creates a tattoo' do
     user = FactoryGirl.create(:user)
-
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-
-    click_button 'Log in'
-
-    expect(page).to have_content('Signed in successfully')
-    expect(page).to have_content('Sign Out')
+    login(user)
 
     visit tattoos_path
 
@@ -44,16 +35,7 @@ So that I could get feedback from others
 
   scenario 'visitor submits a blank form' do
     user = FactoryGirl.create(:user)
-
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-
-    click_button 'Log in'
-
-    expect(page).to have_content('Signed in successfully')
-    expect(page).to have_content('Sign Out')
+    login(user)
 
     visit tattoos_path
 

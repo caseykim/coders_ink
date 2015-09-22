@@ -3,3 +3,9 @@
 <% if @tattoo.description.present? %>
   <h3><%= @tattoo.description %></h3>
 <% end %>
+<% if @tattoo.studio.present? %>
+  <h5>Studio: <%= @tattoo.studio %></h5>
+<% end %>
+<% if @tattoo.artist.present? %>
+  <h5>Artist: <%= @tattoo.artist %></h5>
+<% end %>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "User submits a tattoo of his own", %(
+feature "User submits a tattoo of their own", %(
 As a user
 I want to submit a tattoo for review
 So that I could get feedback from others
@@ -42,7 +42,7 @@ So that I could get feedback from others
     expect(page).to have_css(urlcss)
   end
 
-  scenario 'visitor messes up the form' do
+  scenario 'visitor submits a blank form' do
     user = FactoryGirl.create(:user)
 
     visit new_user_session_path
@@ -62,5 +62,19 @@ So that I could get feedback from others
     click_button "Submit"
     errors = "Title can't be blank, Url can't be blank"
     expect(page).to have_content(errors)
+  end
+
+  scenario 'visitor submits a form while not signed in' do
+    visit tattoos_path
+
+    click_link "Add A Tattoo"
+
+    fill_in "Title", with: "Brand New Tattoo"
+    fill_in "Description", with: "Hurt a lot!"
+    fill_in "Image URL", with: "https://pbs.twimg.com/media/BQMYIh2CMAAmGqp.jpg"
+
+    click_button "Submit"
+
+    expect(page).to have_content("User can't be blank")
   end
 end

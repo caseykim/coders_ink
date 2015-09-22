@@ -33,7 +33,7 @@ RSpec.configure do |config|
     # ...rather than:
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
-    config.include LoginHelper, type: :feature
+    config.include LoginHelper
   end
 
   # rspec-mocks config goes here. You can use an alternate test double

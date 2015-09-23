@@ -5,6 +5,8 @@ class TattoosController < ApplicationController
 
   def show
     @tattoo = Tattoo.find(params[:id])
+    @review = Review.new
+    @reviews = @tattoo.reviews
   end
 
   def new

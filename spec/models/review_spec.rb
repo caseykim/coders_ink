@@ -7,6 +7,9 @@ RSpec.describe Review, type: :model do
       FactoryGirl.create(:review)
     end
 
+    it { should belong_to(:tattoo) }
+    it { should belong_to(:user) }
+
     it "should have a user assigned to it" do
       expect(review.user_id).to eq(1)
     end

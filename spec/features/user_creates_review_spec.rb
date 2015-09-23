@@ -11,7 +11,7 @@ So that I can share my stupid opinion with the world
   [ ] I may optionally enter a review of the tattoo
 ) do
 
-  scenario 'visitor edits tattoo details' do
+  scenario 'visitor reviews a tattoo' do
     FactoryGirl.create(:tattoo, title: "Badass Celtic Armband")
     user = FactoryGirl.create(:user)
     login(user)
@@ -25,5 +25,17 @@ So that I can share my stupid opinion with the world
     expect(page).to have_content("Badass Celtic Armband")
     expect(page).to have_content(4)
     expect(page).to have_content("Not too shabby")
+  end
+
+  scenario 'visitor fills out form incorrectly' do
+    FactoryGirl.create(:tattoo, title: "Badass Celtic Armband")
+
+    visit tattoos_path
+    click_link ("Badass Celtic Armband")
+
+    click_button "Submit"
+    errors = "Rating can't be blank, Rating is not a number,
+      Rating Must be 1 through 5, User can't be blank"
+    expect(page).to have_content(errors)
   end
 end

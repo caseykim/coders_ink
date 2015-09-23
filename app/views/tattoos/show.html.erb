@@ -18,17 +18,17 @@
 
 <div class="reviews_list">
   <% if @tattoo.reviews.empty? %>
-  <h6>No reviews yet, add one?</h6>
+    <h6>No reviews yet, add one?</h6>
   <% else %>
     <table>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.rating %></td>
-        <td><%= review.body %></td>
-        <td>Review by: <%= review.user.username %></td>
-      </tr>
-    <% end %>
-  </table>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.rating %></td>
+          <td><%= review.body %></td>
+          <td>Review by: <%= review.user.username %></td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
 </div>
 

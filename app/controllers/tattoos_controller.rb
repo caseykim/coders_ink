@@ -29,5 +29,4 @@ class TattoosController < ApplicationController
   def tattoo_params
     params.require(:tattoo).permit(:title, :description, :url, :studio, :artist)
   end
-
 end

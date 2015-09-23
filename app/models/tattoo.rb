@@ -10,7 +10,7 @@ class Tattoo < ActiveRecord::Base
     self.reviews.each do |review|
       sum += review.rating
     end
-    sum = sum / self.reviews.length
+    sum = sum / reviews.length
     sum = sum.round(1)
   end
 end

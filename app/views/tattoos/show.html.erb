@@ -10,7 +10,9 @@
   <% if @tattoo.artist.present? %>
     <h5>Artist: <%= @tattoo.artist %></h5>
   <% end %>
-  <h5>Average Rating: <%= @average_rating %>/5</h5>
+  <% unless @tattoo.reviews.empty? %>
+    <h5>Average Rating: <%= @average_rating %>/5</h5>
+  <% end %>
 </div>
 
 

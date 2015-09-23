@@ -43,6 +43,8 @@ class TattoosController < ApplicationController
     if @tattoo.update_attributes(tattoo_params)
       flash[:notice] = 'Tattoo successfully updated.'
       redirect_to tattoo_path(@tattoo)
+    elsif !signed_in?
+      authenticate_user!
     else
       flash[:error] = @tattoo.errors.full_messages.join(", ")
       render :edit

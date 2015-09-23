@@ -14,9 +14,8 @@ RSpec.describe Review, type: :model do
     it { should validate_presence_of(:tattoo_id) }
     it { should validate_presence_of(:rating) }
     it { should validate_numericality_of(:rating) }
-    it { should validate_inclusion_of(:rating).
-      in_range(1..5).with_message("Must be 1 through 5") }
-
+    m = "Must be 1 through 5"
+    it { should validate_inclusion_of(:rating).in_range(1..5).with_message(m) }
 
     it "should have a user assigned to it" do
       expect(review.user_id).to eq(1)

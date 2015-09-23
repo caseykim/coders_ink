@@ -7,6 +7,8 @@ RSpec.describe Tattoo, type: :model do
       FactoryGirl.create(:tattoo, title: 'Badass Celtic Armband')
     end
 
+    it { should have_many(:reviews) }
+
     it "should have a user assigned to it" do
       expect(tattoo.user_id).to eq(1)
     end

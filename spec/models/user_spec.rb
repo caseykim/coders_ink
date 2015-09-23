@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+
+  it { should have_many(:tattoos) }
+  it { should have_many(:reviews) }
+
   it { should have_valid(:username).when("example-postink") }
   it { should_not have_valid(:username).when(nil, "") }
 

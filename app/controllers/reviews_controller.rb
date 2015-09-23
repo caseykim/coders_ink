@@ -1,12 +1,10 @@
 class ReviewsController < ApplicationController
-  def new
-  end
-
   def create
     @tattoo = Tattoo.find(params[:tattoo_id])
     @review = @tattoo.reviews.new(review_params)
     @review.user = current_user
     if @review.save
+      flash[:notice] = "Review Added Successfully!"
       redirect_to tattoo_path(@tattoo)
     else
       flash[:errors] = @review.errors.full_messages.join(", ")

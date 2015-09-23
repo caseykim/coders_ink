@@ -2,7 +2,7 @@
   <% @tattoos.each do |tattoo| %>
   <div class="panel large-centered large-6 columns">
     <%= link_to image_tag(tattoo.url, class: "tattoo-thumbnail"), tattoo_path(tattoo) %>
-    <p><%= tattoo.title %></p>
+    <p><%= link_to tattoo.title, tattoo_path(tattoo) %></p>
   </div>
   <% end %>
 </div>

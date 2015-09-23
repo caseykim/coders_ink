@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   # mount_uploader :avatar, AvatarUploader
 
   has_many :tattoos
+  has_many :reviews
   validates :email, presence: true
   validates :username, presence: true
 end

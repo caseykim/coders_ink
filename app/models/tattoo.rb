@@ -7,7 +7,7 @@ class Tattoo < ActiveRecord::Base
 
   def average_rating
     sum = 0.0
-    self.reviews.each do |review|
+    reviews.each do |review|
       sum += review.rating
     end
     sum = sum / reviews.length

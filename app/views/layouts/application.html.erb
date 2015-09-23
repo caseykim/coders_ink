@@ -17,6 +17,7 @@
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
+          <li><%= link_to "Add A Tattoo", new_tattoo_path %></li>
           <li><%= link_to 'Account Settings', edit_user_registration_path %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
@@ -32,9 +33,7 @@
       <%= value %>
     </div>
   <%- end -%>
-
   <%= yield %>
-
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>
 </body>

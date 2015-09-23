@@ -1,7 +1,15 @@
-<h1><%= @tattoo.title %></h1>
-<%= image_tag(@tattoo.url, class: "tattoo_image") %>
-<% if @tattoo.description.present? %>
-  <h3><%= @tattoo.description %></h3>
-<% end %>
-<%= link_to 'Edit Tattoo', edit_tattoo_path(@tattoo) %>
-<%= button_to 'Delete Tattoo', @tattoo, method: :delete %>
+<div class="panel large-centered large-4 columns">
+  <h1><%= @tattoo.title %></h1>
+  <%= image_tag(@tattoo.url, class: "tattoo_image") %>
+  <% if @tattoo.description.present? %>
+    <h3><%= @tattoo.description %></h3>
+  <% end %>
+  <% if @tattoo.studio.present? %>
+    <h5>Studio: <%= @tattoo.studio %></h5>
+  <% end %>
+  <% if @tattoo.artist.present? %>
+    <h5>Artist: <%= @tattoo.artist %></h5>
+  <% end %>
+  <%= link_to 'Edit Tattoo', edit_tattoo_path(@tattoo) %>
+  <%= button_to 'Delete Tattoo', @tattoo, method: :delete %>
+</div>

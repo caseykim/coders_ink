@@ -1,8 +1,22 @@
-<h1>Tattoos</h1>
+<div class="side-bar">
+  <ul>
+    <li><a href="http://wwww.google.com">The Google</a></li>
+    <hr />
+    <li><a href="http://wwww.google.com">The Google</a></li>
+    <hr />
+    <li><a href="http://wwww.google.com">The Google</a></li>
+    <hr />
+    <li><a href="http://wwww.google.com">The Google</a></li>
+    <hr />
+    <li><a href="http://wwww.google.com">The Google</a></li>
+  </ul>
+</div>
 
-<h4><%= link_to "Add A Tattoo", new_tattoo_path %></h4>
-<ul>
+<div id="tattoo_listings">
   <% @tattoos.each do |tattoo| %>
-    <li><%= link_to tattoo.title, tattoo_path(tattoo) %></li>
+  <div class="panel large-centered large-6 columns">
+    <%= link_to image_tag(tattoo.url, class: "tattoo-thumbnail"), tattoo_path(tattoo) %>
+    <p><%= tattoo.title %></p>
+  </div>
   <% end %>
-</ul>
+</div>

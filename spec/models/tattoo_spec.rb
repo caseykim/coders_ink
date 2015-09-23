@@ -23,5 +23,13 @@ RSpec.describe Tattoo, type: :model do
       url = "http://www.clipartbest.com/cliparts/4T9/xK9/4T9xK9eTE.jpeg"
       expect(tattoo.url).to eq(url)
     end
+
+    it "should have a studio" do
+      expect(tattoo.studio).to eq("Inflicting Ink")
+    end
+
+    it "should have a artist" do
+      expect(tattoo.artist).to eq("Jeff Goyette")
+    end
   end
 end

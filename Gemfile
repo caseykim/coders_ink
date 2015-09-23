@@ -9,25 +9,27 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'carrierwave'
+gem 'devise'
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'factory_girl'
+  gem 'valid_attribute'
+  gem 'shoulda-matchers', require: false
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
-
   gem 'spring'
 end
 
-gem 'rspec-rails', group: [:development, :test]
-gem 'capybara', group: [:development, :test]
-gem 'launchy', group: [:development, :test]
-gem 'factory_girl', group: [:development, :test]
-gem 'valid_attribute', group: [:development, :test]
-gem 'shoulda-matchers', group: [:development, :test], require: false
-gem 'devise'
-gem 'foundation-rails'
+group :production do
+  gem 'rails_12factor'
+end
 
 group :test do
   gem 'coveralls', require: false

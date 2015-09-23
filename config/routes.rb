@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:index, :show]
-  resources :tattoos, only: [:index, :show, :new, :create]
+  resources :tattoos, only: [:index, :show, :new, :create] do
+    resources :reviews, only: [:new, :create]
+  end
 end

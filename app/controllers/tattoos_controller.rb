@@ -5,6 +5,9 @@ class TattoosController < ApplicationController
 
   def show
     @tattoo = Tattoo.find(params[:id])
+    @review = Review.new
+    @reviews = @tattoo.reviews
+    @average_rating = rating_average(@reviews)
   end
 
   def new
@@ -26,5 +29,14 @@ class TattoosController < ApplicationController
 
   def tattoo_params
     params.require(:tattoo).permit(:title, :description, :url, :studio, :artist)
+  end
+
+  def rating_average(reviews)
+    sum = 0.0
+    reviews.each do |review|
+      sum += review.rating
+    end
+    sum = sum / reviews.length
+    sum = sum.round(1)
   end
 end

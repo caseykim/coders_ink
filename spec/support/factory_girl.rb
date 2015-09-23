@@ -22,4 +22,11 @@ FactoryGirl.define do
     studio "Inflicting Ink"
     artist "Jeff Goyette"
   end
+
+  factory :review do
+    rating 4
+    body "Its great!"
+    user_id 1
+    tattoo_id 1
+  end
 end

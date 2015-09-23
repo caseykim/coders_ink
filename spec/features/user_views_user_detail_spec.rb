@@ -18,7 +18,7 @@ feature "User views user detail page", %(
 
     expect(page).to have_content(user.username)
     expect(page).to have_content(user.email)
-    expect(page).to have_content(user.avatar)
+    expect(page).to have_css("img[src*='#{user.avatar}']")
   end
 
   scenario "user does not see other user's information" do
@@ -35,7 +35,7 @@ feature "User views user detail page", %(
 
     expect(page).to have_css('.tattoo', count: count)
     expect(page).to have_content(user.tattoos.first.title)
-    expect(page).to have_content(user.tattoos.last.url)
+    expect(page).to have_css("img[src*='#{user.tattoos.last.url}']")
   end
 
   scenario "user does not see other user's tattoo posting" do

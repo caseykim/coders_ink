@@ -25,7 +25,7 @@ feature "User views all users", %(
     visit users_path
 
     User.all.each do |user|
-      expect(page).to have_content(user.avatar)
+      expect(page).to have_css("img[src*='#{user.avatar}']")
     end
   end
 

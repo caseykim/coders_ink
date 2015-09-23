@@ -75,7 +75,7 @@ feature "user edits account settings", %(
     expect(page).to have_content('Your account has been updated successfully.')
     expect(page).to_not have_content(old_username)
     expect(page).to have_content(new_username)
-    expect(page).to have_content(new_avatar)
+    expect(page).to have_css("img[src*='#{new_avatar}']")
   end
 
   scenario 'user cannot access users#edit if not authenticated' do

@@ -10,6 +10,10 @@ RSpec.describe Review, type: :model do
     it { should belong_to(:tattoo) }
     it { should belong_to(:user) }
 
+    it { should validate_presence_of(:user) }
+    it { should validate_presence_of(:tattoo) }
+
+
     it "should have a user assigned to it" do
       expect(review.user_id).to eq(1)
     end

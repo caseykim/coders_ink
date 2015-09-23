@@ -19,5 +19,7 @@ FactoryGirl.define do
     description "Great"
     url "http://www.clipartbest.com/cliparts/4T9/xK9/4T9xK9eTE.jpeg"
     user_id 1
+    studio "Inflicting Ink"
+    artist "Jeff Goyette"
   end
 end

@@ -20,5 +20,7 @@ feature "User views a specific tattoo", %(
     expect(page).to have_content('Dagron')
     expect(page).to have_content('Great')
     expect(page).to have_css("img[src*='#{tattoo.url}']")
+    expect(page).to have_content('Inflicting Ink')
+    expect(page).to have_content('Jeff Goyette')
   end
 end

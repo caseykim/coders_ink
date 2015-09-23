@@ -9,6 +9,10 @@ RSpec.describe Tattoo, type: :model do
 
     it { should have_many(:reviews) }
 
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:url) }
+    it { should validate_presence_of(:user_id) }
+
     it "should have a user assigned to it" do
       expect(tattoo.user_id).to eq(1)
     end

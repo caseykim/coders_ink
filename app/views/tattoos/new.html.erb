@@ -1,22 +1,5 @@
 <div class="panel small-8 medium-6 large-5 tattoo_form">
   <h1>Submit Your Tattoo!</h1>
 
-  <%= form_for @tattoo do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-    <br>
-    <%= f.label :url, "Image URL" %>
-    <%= f.text_field :url %>
-    <br>
-    <%= f.label :studio %>
-    <%= f.text_field :studio %>
-    <br>
-    <%= f.label :artist %>
-    <%= f.text_field :artist %>
-    <br>
-    <%= f.submit "Submit", class: "button small success" %>
-  <% end %>
+  <%= render 'form' %>
 </div>

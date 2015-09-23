@@ -8,5 +8,6 @@
   <div class="tattoo">
     <%= tattoo.url %>
     <%= tattoo.title %>
+    <%= button_to 'Delete Tattoo', tattoo, method: :delete, id: "#{tattoo.id}" %>
   </div>
 <% end %>

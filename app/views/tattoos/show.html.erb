@@ -3,3 +3,5 @@
 <% if @tattoo.description.present? %>
   <h3><%= @tattoo.description %></h3>
 <% end %>
+<%= link_to 'Edit Tattoo', edit_tattoo_path(@tattoo) %>
+<%= button_to 'Delete Tattoo', @tattoo, method: :delete %>

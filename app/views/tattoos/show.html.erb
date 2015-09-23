@@ -23,6 +23,7 @@
       <tr>
         <td><%= review.rating %></td>
         <td><%= review.body %></td>
+        <td>Review by: <%= review.user.username %></td>
       </tr>
     <% end %>
   </table>

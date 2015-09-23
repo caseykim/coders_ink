@@ -17,6 +17,8 @@
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
+          <li><%= link_to 'All Tattoos', tattoos_path %></li>
+          <li><%= link_to 'All Users', users_path %></li>
           <li><%= link_to "Add A Tattoo", new_tattoo_path %></li>
           <li><%= link_to 'Account Settings', edit_user_registration_path %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
@@ -27,14 +29,6 @@
       </ul>
     </section>
   </nav>
-
-  <div class="side-bar">
-    <ul>
-      <li><a href=<%= tattoos_path %>>All Tattoos</a></li>
-      <hr />
-      <li><a href=<%= users_path %>>All Users</a></li>
-    </ul>
-  </div>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">

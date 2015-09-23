@@ -12,7 +12,7 @@ So that I can share my stupid opinion with the world
 ) do
 
   scenario 'visitor edits tattoo details' do
-    tattoo = FactoryGirl.create(:tattoo, title: "Badass Celtic Armband")
+    FactoryGirl.create(:tattoo, title: "Badass Celtic Armband")
     user = FactoryGirl.create(:user)
     login(user)
 

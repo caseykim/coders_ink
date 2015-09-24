@@ -7,4 +7,11 @@ class Vote < ActiveRecord::Base
   validates :user, uniqueness: { scope: :review }
   validates :user, presence: true
   validates :review, presence: true
+
+  # def upvote
+  #
+  # vote = Vote.new(user: current_user.id, review: params[:review_id], score: 1)
+  # if vote.save
+  #
+  # end
 end

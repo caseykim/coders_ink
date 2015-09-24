@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   resources :tattoos do
     resources :reviews, only: [:new, :create]
   end
+
+  resources :reviews, only: [:show] do
+    post 'upvote'
+    post 'downvote'
+  end
 end

@@ -1,6 +1,7 @@
 class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :tattoo
+  has_many :votes, dependent: :destroy
 
   validates :rating, presence: true
   validates :rating, numericality: { only_integer: true }

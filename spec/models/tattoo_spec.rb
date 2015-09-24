@@ -7,6 +7,7 @@ RSpec.describe Tattoo, type: :model do
       FactoryGirl.create(:tattoo, title: 'Badass Celtic Armband')
     end
 
+    it { should belong_to(:user) }
     it { should have_many(:reviews) }
 
     it { should validate_presence_of(:title) }

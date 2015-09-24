@@ -8,4 +8,12 @@ class Review < ActiveRecord::Base
   validates :rating, inclusion: { in: 1..5, message: "Must be 1 through 5" }
   validates :user_id, presence: true
   validates :tattoo_id, presence: true
+
+  def score
+    sum = 0
+    votes.each do |vote|
+      sum += vote.score
+    end
+    sum
+  end
 end

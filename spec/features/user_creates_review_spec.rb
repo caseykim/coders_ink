@@ -6,9 +6,9 @@ I want to rate and/or review a tattoo
 So that I can share my stupid opinion with the world
 
   Acceptance Criteria
-  [ ] I must visit the tattoo details page
-  [ ] I must enter a rating of 1 through 5
-  [ ] I may optionally enter a review of the tattoo
+  [√] I must visit the tattoo details page
+  [√] I must enter a rating of 1 through 5
+  [√] I may optionally enter a review of the tattoo
 ) do
 
   scenario 'visitor reviews a tattoo' do

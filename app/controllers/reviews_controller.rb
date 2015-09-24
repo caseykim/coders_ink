@@ -12,6 +12,40 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def upvote
+    review = Review.find(params[:review_id])
+    tattoo = review.tattoo
+    vote = Vote.find_by(user: current_user, review: review)
+    if vote
+      if vote.score == 1
+        vote.score = 0
+      else
+        vote.score = 1
+      end
+      vote.save
+    else
+      Vote.create(user: current_user, review: review, score: 1)
+    end
+    redirect_to tattoo_path(tattoo)
+  end
+
+  def downvote
+    review = Review.find(params[:review_id])
+    tattoo = review.tattoo
+    vote = Vote.find_by(user: current_user, review: review)
+    if vote
+      if vote.score == -1
+        vote.score = 0
+      else
+        vote.score = -1
+      end
+      vote.save
+    else
+      Vote.create(user: current_user, review: review, score: -1)
+    end
+    redirect_to tattoo_path(tattoo)
+  end
+
   protected
 
   def review_params

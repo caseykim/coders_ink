@@ -25,7 +25,7 @@ So that I can decide which reviews are useful
     find(:xpath, "//a[@href='/reviews/#{review.id}/upvote']").click
     count = find(".score_#{review.id}").text
 
-    expect(count).to have_content("#{score+1}")
+    expect(count).to have_content("#{score + 1}")
   end
 
   scenario 'visitor upvotes a review they previously downvoted' do
@@ -42,7 +42,7 @@ So that I can decide which reviews are useful
     find(:xpath, "//a[@href='/reviews/#{review.id}/upvote']").click
     count = find(".score_#{review.id}").text
 
-    expect(count).to have_content("#{score+2}")
+    expect(count).to have_content("#{score + 2}")
   end
 
   scenario 'visitor removes their upvote' do
@@ -59,6 +59,6 @@ So that I can decide which reviews are useful
     find(:xpath, "//a[@href='/reviews/#{review.id}/upvote']").click
     count = find(".score_#{review.id}").text
 
-    expect(count).to have_content("#{score-1}")
+    expect(count).to have_content("#{score - 1}")
   end
 end

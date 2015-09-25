@@ -13,7 +13,6 @@ feature 'User edits a review posting', %(
   [ ] I must get an error alert if the update fails
 ) do
 
-
   let(:user) { FactoryGirl.create(:user_with_tattoos) }
   let(:another_user) { FactoryGirl.create(:user_with_tattoos) }
 
@@ -23,7 +22,7 @@ feature 'User edits a review posting', %(
 
   scenario "user cannot edit other user's review" do
     tattoo = user.tattoos.first
-    otherreview = FactoryGirl.create(:review, user: another_user, tattoo: tattoo)
+    FactoryGirl.create(:review, user: another_user, tattoo: tattoo)
     visit tattoo_path(tattoo)
 
     expect(page).to_not have_content('Edit Review')
@@ -31,7 +30,7 @@ feature 'User edits a review posting', %(
 
   scenario 'user edits a review from tattoo details page' do
     tattoo = another_user.tattoos.last
-    review = FactoryGirl.create(:review, user: user, tattoo: tattoo)
+    FactoryGirl.create(:review, user: user, tattoo: tattoo)
     visit tattoo_path(tattoo)
     click_link 'Edit Review'
     expect(page).to have_content('Update Review')
@@ -48,7 +47,7 @@ feature 'User edits a review posting', %(
 
   scenario 'user edits a review with an invalid form' do
     tattoo = another_user.tattoos.last
-    review = FactoryGirl.create(:review, user: user, tattoo: tattoo)
+    FactoryGirl.create(:review, user: user, tattoo: tattoo)
     visit tattoo_path(tattoo)
     click_link 'Edit Review'
     expect(page).to have_content('Update Review')

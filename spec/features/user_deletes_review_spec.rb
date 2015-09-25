@@ -21,7 +21,7 @@ feature 'User deletes a review', %(
 
   scenario "user cannot delete other user's review" do
     tattoo = user.tattoos.first
-    otherreview = FactoryGirl.create(:review, user: another_user, tattoo: tattoo)
+    FactoryGirl.create(:review, user: another_user, tattoo: tattoo)
     visit tattoo_path(tattoo)
 
     expect(page).to_not have_content('Delete Review')
@@ -29,7 +29,7 @@ feature 'User deletes a review', %(
 
   scenario 'user deletes a tattoo posting from tattoo details page' do
     tattoo = another_user.tattoos.last
-    review = FactoryGirl.create(:review, user: user, tattoo: tattoo)
+    FactoryGirl.create(:review, user: user, tattoo: tattoo)
     visit tattoo_path(tattoo)
     click_button 'Delete Review'
 

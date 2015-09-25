@@ -25,13 +25,13 @@ body {
 }
 
 .main {
-  padding-top: 30px;
-  padding-bottom: 30px;
   margin: auto;
+  padding-bottom: 30px;
+  padding-top: 30px;
   width: 75%;
 }
 
-#user-profile {
+.user-profile {
   max-height: 150px;
   max-width: 150px;
 }
@@ -48,9 +48,9 @@ body {
 
 .account-settings {
   background-color: rgb(209, 188, 163);
-  padding: 10px;
-  font-size: 12px;
   color: rgb(122, 15, 9);
+  font-size: 12px;
+  padding: 10px;
 }
 
 .cancel-account {

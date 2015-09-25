@@ -31,7 +31,7 @@
   </nav>
 
   <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
+    <div class="large-12 alert-box <%= key %>">
       <%= value %>
     </div>
   <%- end -%>

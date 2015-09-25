@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     post 'upvote'
     post 'downvote'
   end
+
+  resources :reviews, only: [:show, :edit, :update, :destroy]
 end

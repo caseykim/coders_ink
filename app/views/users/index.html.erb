@@ -3,7 +3,7 @@
 <div id="tattoo_listings">
   <% @users.each do |user| %>
     <div class="panel large-centered large-6 columns">
-      <%=image_tag(user.avatar, class: "tattoo-thumbnail")%>
+      <%=image_tag(user.profile_photo, class: "tattoo-thumbnail")%>
       <%= link_to user.username, user_path(user) %>
     </div>
   <% end %>

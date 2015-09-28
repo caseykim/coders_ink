@@ -9,7 +9,7 @@ feature "user edits account settings", %(
   [x] I must be able to change my password
   [x] I must be able to change my username
   [x] I must be able to change my email
-  [x] I must be able to change my avatar
+  [x] I must be able to change my profile photo
   [x] I must see the link to account settings when I am signed in
   [x] I must not be able to change information unless authenticated
   [x] I must not be able to change other users' information
@@ -60,22 +60,20 @@ feature "user edits account settings", %(
     expect(page).to have_content("Password confirmation doesn't match Password")
   end
 
-  scenario 'user changes username and avatar' do
-    click_link 'Account Settings'
-    expect(current_path).to eq edit_user_registration_path
+  scenario 'user changes username and profile photo' do
+    visit edit_user_registration_path
 
     old_username = user.username
     new_username = 'trishboogeybogey'
-    new_avatar = 'https://scontent.cdninstagram.com/hphotos-xpf1/t51.2885-15/s320x320/e15/928946_916321521769110_83206274_n.jpg'
+    attach_file('user_profile_photo', File.join(Rails.root, '/spec/support/images/Unicorn.last.jpeg'))
     fill_in 'Username', with: new_username
-    fill_in 'Avatar', with: new_avatar
     fill_in 'Current password', with: user.password
     click_button 'Update'
 
     expect(page).to have_content('Your account has been updated successfully.')
     expect(page).to_not have_content(old_username)
     expect(page).to have_content(new_username)
-    expect(page).to have_css("img[src*='#{new_avatar}']")
+    expect(page).to have_css("img[src*='uploads/user/profile_photo/#{user.id}/Unicorn.last.jpeg']")
   end
 
   scenario 'user cannot access users#edit if not authenticated' do

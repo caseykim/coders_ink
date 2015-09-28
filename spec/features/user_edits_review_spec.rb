@@ -22,7 +22,6 @@ feature 'User edits a review posting', %(
     FactoryGirl.create(:review, user: user, tattoo: another_user.tattoos.last)
   end
 
-
   context "user is not signed in" do
     scenario "users not logged in cannot edit reviews" do
       tattoo = user.tattoos.first
@@ -58,7 +57,6 @@ feature 'User edits a review posting', %(
 
       fill_in 'Rating', with: "5"
       fill_in 'Review', with: "WHOO"
-      
       click_button 'Submit'
       expect(page).to have_content('Review successfully updated.')
       expect(page).to have_content('5')
@@ -74,7 +72,6 @@ feature 'User edits a review posting', %(
       expect(page).to have_content('Review')
 
       fill_in 'Rating', with: "500"
-
       click_button 'Submit'
       expect(page).to have_content('Rating Must be 1 through 5')
     end

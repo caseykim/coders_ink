@@ -44,6 +44,10 @@
           <td>Rating: <%= review.rating %></td>
           <td><%= review.body %></td>
           <td>Review by: <%= review.user.username %></td>
+          <% if review.user == current_user %>
+            <td><%= link_to 'Edit Review', edit_review_path(review), class: "edit_review" %></td>
+            <td><%= button_to 'Delete Review', review, method: :delete, class: "delete_review" %></td>
+          <% end %>
         </tr>
       <% end %>
     </table>

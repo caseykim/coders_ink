@@ -20,7 +20,7 @@ FactoryGirl.define do
     sequence(:title) { |n| "Celtic Armband #{n}" }
     description "Great"
     url "http://www.clipartbest.com/cliparts/4T9/xK9/4T9xK9eTE.jpeg"
-    user FactoryGirl.create(:user, email: "new@email.com")
+    user
     studio "Inflicting Ink"
     artist "Jeff Goyette"
   end
@@ -28,7 +28,7 @@ FactoryGirl.define do
   factory :review do
     rating 4
     body "Its great!"
-    user_id 1
-    tattoo_id 1
+    user
+    tattoo
   end
 end

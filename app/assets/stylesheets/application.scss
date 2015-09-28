@@ -50,9 +50,23 @@ footer {
   margin: 10px;
 }
 
-#user_profile {
+.main {
+  margin: auto;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.account-box {
+  width: 75%;
+  margin: auto;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.user-profile {
   max-height: 150px;
   max-width: 150px;
+
 }
 
 .user-show {
@@ -62,4 +76,17 @@ footer {
 .tattoo-image {
   max-height: 450px;
   max-width: 500px;
+}
+
+.account-settings {
+  background-color: rgb(209, 188, 163);
+  color: rgb(122, 15, 9);
+  padding: 10px;
+}
+
+.cancel-account {
+  background-color: rgb(34, 34, 34);
+  color: rgb(190, 184, 179);
+  margin: auto;
+  text-align: center;
 }

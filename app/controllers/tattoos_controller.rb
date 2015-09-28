@@ -23,7 +23,7 @@ class TattoosController < ApplicationController
     if @tattoo.save
       redirect_to tattoo_path(@tattoo)
     else
-      flash[:error] = @tattoo.errors.full_messages.join(", ")
+      flash[:alert] = @tattoo.errors.full_messages.join(", ")
       render :new
     end
   end
@@ -35,7 +35,7 @@ class TattoosController < ApplicationController
     elsif !signed_in?
       authenticate_user!
     else
-      flash[:notice] = 'You have no permission to edit this posting'
+      flash[:alert] = 'You have no permission to edit this posting'
       redirect_to tattoo_path(tattoo)
     end
   end
@@ -48,7 +48,7 @@ class TattoosController < ApplicationController
     elsif !signed_in?
       authenticate_user!
     else
-      flash[:error] = @tattoo.errors.full_messages.join(", ")
+      flash[:alert] = @tattoo.errors.full_messages.join(", ")
       render :edit
     end
   end
@@ -62,7 +62,7 @@ class TattoosController < ApplicationController
     elsif !signed_in?
       authenticate_user!
     else
-      flash[:notice] = 'You have no permission to delete this posting'
+      flash[:alert] = 'You have no permission to delete this posting'
       redirect_to tattoo_path(@tattoo)
     end
   end

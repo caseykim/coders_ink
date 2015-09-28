@@ -10,12 +10,14 @@
   <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Miltonian+Tattoo' rel='stylesheet' type='text/css'>
   <%- flash.each do |key, value| -%>
-    <div data-alert class="alert-box success radius flash flash-<%= key %>">
+    <div class="large-12 alert-box <%= key %>">
       <%= value %>
     </div>
   <%- end -%>
   <%= render "layouts/topbar" %>
-  <%= yield %>
+  <section class="main">
+    <%= yield %>
+  </section>
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>
 <script>

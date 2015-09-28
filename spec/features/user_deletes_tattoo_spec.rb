@@ -14,6 +14,17 @@ feature 'User deletes a tattoo posting', %(
 
   let(:user) { FactoryGirl.create(:user_with_tattoos) }
 
+  context "user is not signed in" do
+    scenario "users not logged in cannot edit tattoos" do
+      tattoo = user.tattoos.first
+      visit tattoo_path(tattoo)
+
+      expect(page).to_not have_button('Delete')
+    end
+  end
+
+  context "user is signed in" do
+
   before do
     visit new_user_session_path
     fill_in 'Email', with: user.email
@@ -25,9 +36,8 @@ feature 'User deletes a tattoo posting', %(
     another_user = FactoryGirl.create(:user_with_tattoos)
     tattoo = another_user.tattoos.first
     visit tattoo_path(tattoo)
-    click_button 'Delete'
 
-    expect(page).to have_content('no permission to delete')
+    expect(page).to_not have_button('Delete')
   end
 
   scenario 'user deletes a tattoo posting from tattoo details page' do
@@ -45,5 +55,5 @@ feature 'User deletes a tattoo posting', %(
 
     expect(page).to have_content('Tattoo deleted successfully.')
   end
-
+  end
 end

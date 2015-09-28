@@ -7,7 +7,7 @@ feature "user edits a tattoo posting", %(
 
   Acceptance Criteria
   [x] I can only edit my own tattoo posting
-  [x] I must be authenticated in order to make change
+  [x] I must be authenticated in order to make changes
   [x] I must be able to change the title
   [x] I must be able to change the description
   [x] I must be able to change the tattoo image
@@ -17,6 +17,17 @@ feature "user edits a tattoo posting", %(
 ) do
 
   let(:user) { FactoryGirl.create(:user_with_tattoos) }
+
+  context "user is not signed in" do
+    scenario "users not logged in cannot edit tattoos" do
+      tattoo = user.tattoos.first
+      visit tattoo_path(tattoo)
+
+      expect(page).to_not have_link('Edit')
+    end
+  end
+
+  context "user is signed in" do
 
   before do
     visit new_user_session_path
@@ -29,17 +40,7 @@ feature "user edits a tattoo posting", %(
     another_user = FactoryGirl.create(:user_with_tattoos)
     tattoo = another_user.tattoos.first
     visit tattoo_path(tattoo)
-    click_link 'Edit'
-
-    expect(page).to have_content('no permission to edit')
-  end
-
-  scenario "user cannot edit other user's tattoo posting" do
-    tattoo = user.tattoos.first
-    click_link 'Sign Out'
-    visit edit_tattoo_path(tattoo)
-
-    expect(page).to have_content('need to sign in or sign up before continuing')
+    expect(page).to_not have_link('Edit')
   end
 
   scenario 'user edits tattoo posting' do
@@ -67,5 +68,6 @@ feature "user edits a tattoo posting", %(
     expect(page).to have_content("Title can't be blank")
     expect(page).to have_content("Url can't be blank")
     expect(page).to_not have_content("Description can't be blank")
+  end
   end
 end

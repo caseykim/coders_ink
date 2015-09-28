@@ -32,17 +32,13 @@
   <% else %>
     <table>
       <% @reviews.each do |review| %>
-        <tr>
+        <tr id="<%= review.id %>">
           <td>
-            <%=link_to image_tag("/thumbup.png"),
-          review_upvote_path(review),
-          method: :post
-          %></td>
-          <td class=<%="score_#{review.id}"%>><%= review.score %></td>
-          <td><%= link_to image_tag("/thumbdown.png"),
-          review_downvote_path(review),
-          method: :post
-          %></td>
+            <%=link_to image_tag("/thumbup.png", class: "upvote"),"#"%>
+          </td>
+          <td id ="score" class=<%="score_#{review.id}"%>><%= review.score %></td>
+          <td><%= link_to image_tag("/thumbdown.png", class: "downvote"),"#"%>
+          </td>
           <td>Rating: <%= review.rating %></td>
           <td><%= review.body %></td>
           <td>Review by: <%= review.user.username %></td>
@@ -73,3 +69,5 @@
     </div>
   </div>
 <% end %>
+
+<script "/assets/javascripts/voting.js"></script>

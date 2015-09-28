@@ -14,7 +14,6 @@ feature 'User deletes a tattoo posting', %(
 
   let(:user) { FactoryGirl.create(:user_with_tattoos) }
 
-
   context "user is not signed in" do
     scenario "users not logged in cannot edit tattoos" do
       tattoo = user.tattoos.first

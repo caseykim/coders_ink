@@ -40,7 +40,6 @@ feature "user edits a tattoo posting", %(
     another_user = FactoryGirl.create(:user_with_tattoos)
     tattoo = another_user.tattoos.first
     visit tattoo_path(tattoo)
-    
     expect(page).to_not have_link('Edit')
   end
 

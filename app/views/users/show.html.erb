@@ -1,17 +1,29 @@
 <div class="row">
-  <div class="panel large-4 columns">
+  <div class="section-box text-center panel large-6 medium-8 small-12
+  large-centered medium-centered small-centered columns">
     <%= image_tag(@user.profile_photo, class: "user-profile") %>
-    <h1><%= @user.username %></h1>
-    <h3><%= @user.email %></h3>
+    <h1 class="section-title"><%= @user.username %></h1>
+    <h3 class="section-title"><%= @user.email %></h3>
   </div>
-  <div class="large-8 columns">
-    <div id="tattoo_listings">
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row">
       <% @user.tattoos.each do |tattoo| %>
-        <div class="tattoo panel large-centered large-6 columns">
-          <%= link_to image_tag(tattoo.url, class: "tattoo-thumbnail"), tattoo_path(tattoo) %>
-          <%= tattoo.title %>
-          <%= button_to 'Delete Tattoo', tattoo, method: :delete, id: "#{tattoo.id}" %>
+      <div class="large-3 medium-4 small-6 columns">
+        <%= link_to image_tag(tattoo.url), tattoo_path(tattoo) %>
+        <div class="panel">
+          <h5 class="text-center"><%= tattoo.title %></h5>
+          <ul class="button-group even-2">
+            <% if tattoo.user == current_user %>
+              <li><%= link_to 'Edit', edit_tattoo_path(tattoo), class: "button tiny" %></li>
+              <li class="text-center"><%= button_to 'Delete', tattoo,
+                  method: :delete, id: "#{tattoo.id}", class: "button tiny alert" %></li>
+            <% end %>
+          </ul>
         </div>
+      </div>
       <% end %>
     </div>
   </div>

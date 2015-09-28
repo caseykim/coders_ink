@@ -64,8 +64,10 @@ feature "user edits account settings", %(
     visit edit_user_registration_path
 
     old_username = user.username
-    new_username = 'trishboogeybogey'
-    attach_file('user_profile_photo', File.join(Rails.root, '/spec/support/images/Unicorn.last.jpeg'))
+    new_username = 'trishboogey'
+    attach_file('user_profile_photo',
+      File.join(Rails.root, '/spec/support/images/Unicorn.last.jpeg')
+    )
     fill_in 'Username', with: new_username
     fill_in 'Current password', with: user.password
     click_button 'Update'
@@ -73,7 +75,8 @@ feature "user edits account settings", %(
     expect(page).to have_content('Your account has been updated successfully.')
     expect(page).to_not have_content(old_username)
     expect(page).to have_content(new_username)
-    expect(page).to have_css("img[src*='uploads/user/profile_photo/#{user.id}/Unicorn.last.jpeg']")
+    path = 'uploads/user/profile_photo/#{user.id}/Unicorn.last.jpeg'
+    expect(page).to have_css("img[src*=#{path}]")
   end
 
   scenario 'user cannot access users#edit if not authenticated' do

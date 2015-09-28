@@ -1,0 +1,16 @@
+<h1>Update Review</h1>
+
+<div class="small-8 medium-6 large-4 tattoo_form">
+  <%= form_for @review do |f| %>
+
+    <%= f.label :rating %>
+    <%= f.number_field :rating  %>
+
+    <%= f.label :body, "Review" %>
+    <%= f.text_area :body %>
+
+    <%= f.submit "Submit", class: "submit_class button expand round" %>
+  <% end %>
+</div>
+
+<%= link_to 'Back', tattoo_path(@tattoo) %>

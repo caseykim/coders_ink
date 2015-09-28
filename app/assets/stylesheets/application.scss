@@ -24,26 +24,58 @@ body {
   background-size: cover;
 }
 
+footer {
+  background-color: #000000;
+  height: auto;
+}
+
+.banner-image {
+  padding-top: 15px;
+}
+
+.section-title {
+  font-family: 'Miltonian Tattoo', cursive;
+}
+
+.section-box {
+  background-color: #808080;
+  border: 1px solid #000000;
+  margin: 5px;
+  padding: 10px;
+}
+
+.form-background {
+  background-color: #ffffff;
+  margin: 10px;
+  padding: 10px;
+}
+
 .main {
   margin: auto;
   padding-bottom: 30px;
   padding-top: 30px;
+}
+
+.account-box {
   width: 75%;
+  margin: auto;
+  padding-bottom: 30px;
+  padding-top: 30px;
 }
 
 .user-profile {
   max-height: 150px;
   max-width: 150px;
+
+}
+
+.user-show {
+  float: left;
 }
 
 .tattoo-image {
   max-height: 450px;
   max-width: 500px;
-}
-
-.tattoo-thumbnail {
-  max-height: 150px;
-  max-width: 200px;
 }
 
 .account-settings {

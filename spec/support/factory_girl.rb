@@ -6,7 +6,9 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
     sequence(:username) { |n| "user#{n}" }
-    profile_photo { Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/support/images/example.jpg')) }
+    profile_photo { Rack::Test::UploadedFile.new(
+      File.join(Rails.root, '/spec/support/images/example.jpg')
+    )}
 
     factory :user_with_tattoos do
       after(:create) do |user|
@@ -16,7 +18,7 @@ FactoryGirl.define do
   end
 
   factory :tattoo do
-    sequence(:title) { |n| "Badass Celtic Armband Number #{n}" }
+    sequence(:title) { |n| "Celtic Armband #{n}" }
     description "Great"
     url "http://www.clipartbest.com/cliparts/4T9/xK9/4T9xK9eTE.jpeg"
     user_id 1

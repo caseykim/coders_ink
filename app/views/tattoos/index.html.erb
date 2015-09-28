@@ -1,8 +1,21 @@
-<div id="tattoo_listings">
-  <% @tattoos.each do |tattoo| %>
-  <div class="panel large-centered large-6 columns">
-    <%= link_to image_tag(tattoo.url, class: "tattoo-thumbnail"), tattoo_path(tattoo) %>
-    <p><%= link_to tattoo.title, tattoo_path(tattoo) %></p>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="large-12 small-12 columns">
+      <img class="panel" src="/banner.png">
+    </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+            <% @tattoos.each do |tattoo| %>
+            <div class="large-4 small-6 columns">
+              <a href="<%= tattoo_path(tattoo) %>"><img class="tattoo-box" src="<%= tattoo.url %>"></a>
+              <div class="panel">
+                <h5 class="text-center"><%= link_to tattoo.title, tattoo_path(tattoo) %></h5>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
   </div>
-  <% end %>
 </div>

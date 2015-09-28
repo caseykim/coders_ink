@@ -24,17 +24,42 @@ body {
   background-size: cover;
 }
 
+footer {
+  height: auto;
+  background-color: black;
+}
+
+.banner-image {
+  padding-top: 15px;
+}
+
+.section-title {
+  font-family: 'Miltonian Tattoo', cursive;
+}
+
+.section-box {
+  background-color: gray;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.form-background {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+}
+
 #user_profile {
   max-height: 150px;
   max-width: 150px;
 }
 
+.user-show {
+  float: left;
+}
+
 .tattoo-image {
   max-height: 450px;
   max-width: 500px;
-}
-
-.tattoo-thumbnail {
-  max-height: 150px;
-  max-width: 200px;
 }

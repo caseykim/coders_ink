@@ -65,7 +65,7 @@ feature "user edits account settings", %(
     expect(current_path).to eq edit_user_registration_path
 
     old_username = user.username
-    new_username = 'trishboogeybogey'
+    new_username = 'trishboogey'
     new_avatar = 'https://scontent.cdninstagram.com/hphotos-xpf1/t51.2885-15/s320x320/e15/928946_916321521769110_83206274_n.jpg'
     fill_in 'Username', with: new_username
     fill_in 'Avatar', with: new_avatar

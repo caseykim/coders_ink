@@ -12,26 +12,26 @@ So that I can share my stupid opinion with the world
 ) do
 
   scenario 'visitor reviews a tattoo' do
-    FactoryGirl.create(:tattoo, title: "Badass Celtic Armband")
+    FactoryGirl.create(:tattoo, title: "Celtic Armband")
     user = FactoryGirl.create(:user)
     login(user)
 
     visit tattoos_path
-    click_link("Badass Celtic Armband")
+    click_link("Celtic Armband")
 
     fill_in "Rating", with: 4
     fill_in "Review", with: "Not too shabby"
     click_button "Submit"
-    expect(page).to have_content("Badass Celtic Armband")
+    expect(page).to have_content("Celtic Armband")
     expect(page).to have_content(4)
     expect(page).to have_content("Not too shabby")
   end
 
   scenario 'visitor fills out form incorrectly' do
-    FactoryGirl.create(:tattoo, title: "Badass Celtic Armband")
+    FactoryGirl.create(:tattoo, title: "Celtic Armband")
 
     visit tattoos_path
-    click_link ("Badass Celtic Armband")
+    click_link ("Celtic Armband")
 
     click_button "Submit"
     errors = "Rating can't be blank, Rating is not a number,

@@ -4,7 +4,7 @@ RSpec.describe Tattoo, type: :model do
 
   context 'tattoos' do
     let!(:tattoo) do
-      FactoryGirl.create(:tattoo, title: 'Badass Celtic Armband')
+      FactoryGirl.create(:tattoo, title: 'Celtic Armband')
     end
 
     it { should belong_to(:user) }
@@ -19,7 +19,7 @@ RSpec.describe Tattoo, type: :model do
     end
 
     it "should have a title" do
-      expect(tattoo.title).to eq("Badass Celtic Armband")
+      expect(tattoo.title).to eq("Celtic Armband")
     end
 
     it "should have a description" do

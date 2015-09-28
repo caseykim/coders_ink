@@ -8,6 +8,8 @@ class Review < ActiveRecord::Base
   validates :rating, inclusion: { in: 1..5, message: "Must be 1 through 5" }
   validates :user_id, presence: true
   validates :tattoo_id, presence: true
+  message = "has already reviewed this tattoo"
+  validates :user_id, uniqueness: { scope: :tattoo_id, message: message }
 
   def score
     sum = 0

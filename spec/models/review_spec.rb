@@ -18,6 +18,11 @@ RSpec.describe Review, type: :model do
     m = "Must be 1 through 5"
     it { should validate_inclusion_of(:rating).in_range(1..5).with_message(m) }
 
+    it "should not allow you to review a tattoo twice" do
+      e = "has already reviewed this tattoo"
+      should validate_uniqueness_of(:user_id).scoped_to(:tattoo_id).with_message(e)
+    end
+
     it "should have a user assigned to it" do
       expect(review.user_id).to eq(1)
     end

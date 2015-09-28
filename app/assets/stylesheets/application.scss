@@ -66,7 +66,6 @@ footer {
 .user-profile {
   max-height: 150px;
   max-width: 150px;
-
 }
 
 .user-show {
@@ -76,6 +75,17 @@ footer {
 .tattoo-image {
   max-height: 450px;
   max-width: 500px;
+}
+
+.tattoo-box {
+  background-color: rgb(32, 32, 32);
+  margin: auto;
+  text-align: center;
+}
+
+.fillwidth {
+  height: 300px;
+  min-width: 100%;
 }
 
 .account-settings {

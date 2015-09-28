@@ -8,7 +8,9 @@
           <div class="row">
             <% @tattoos.each do |tattoo| %>
             <div class="large-4 small-6 columns">
-              <a href="<%= tattoo_path(tattoo) %>"><img class="tattoo-box" src="<%= tattoo.url %>"></a>
+              <div class="tattoo-box">
+                <a href="<%= tattoo_path(tattoo) %>"><img class="fillwidth" src="<%= tattoo.url %>"></a>
+              </div>
               <div class="panel">
                 <h5 class="text-center"><%= link_to tattoo.title, tattoo_path(tattoo) %></h5>
               </div>

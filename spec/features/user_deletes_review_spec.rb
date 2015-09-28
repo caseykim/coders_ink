@@ -15,25 +15,41 @@ feature 'User deletes a review', %(
   let(:user) { FactoryGirl.create(:user_with_tattoos) }
   let(:another_user) { FactoryGirl.create(:user_with_tattoos) }
 
-  before do
-    login(user)
+  context "user is not signed in" do
+
+    scenario "user cannot delete reviews if they aren't logged in" do
+      tattoo = user.tattoos.first
+      FactoryGirl.create(:review, user: another_user, tattoo: tattoo)
+      visit tattoo_path(tattoo)
+
+      expect(page).to_not have_content('Delete Review')
+    end
+
   end
 
-  scenario "user cannot delete other user's review" do
-    tattoo = user.tattoos.first
-    FactoryGirl.create(:review, user: another_user, tattoo: tattoo)
-    visit tattoo_path(tattoo)
+  context "user is signed in" do
 
-    expect(page).to_not have_content('Delete Review')
-  end
+    before do
+      login(user)
+    end
 
-  scenario 'user deletes a tattoo posting from tattoo details page' do
-    tattoo = another_user.tattoos.last
-    FactoryGirl.create(:review, user: user, tattoo: tattoo)
-    visit tattoo_path(tattoo)
-    click_button 'Delete Review'
+    scenario "user cannot delete other user's review" do
+      tattoo = user.tattoos.first
+      FactoryGirl.create(:review, user: another_user, tattoo: tattoo)
+      visit tattoo_path(tattoo)
 
-    expect(page).to have_content('Review deleted successfully.')
+      expect(page).to_not have_content('Delete Review')
+    end
+
+    scenario 'user deletes a tattoo posting from tattoo details page' do
+      tattoo = another_user.tattoos.last
+      FactoryGirl.create(:review, user: user, tattoo: tattoo)
+      visit tattoo_path(tattoo)
+      click_button 'Delete Review'
+
+      expect(page).to have_content('Review deleted successfully.')
+    end
+
   end
 
 end

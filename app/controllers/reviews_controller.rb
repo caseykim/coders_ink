@@ -28,11 +28,11 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @tattoo = @review.tattoo
-    if @review.update_attributes(review_params)
+    if !signed_in?
+      authenticate_user!
+    elsif @review.update_attributes(review_params)
       flash[:notice] = 'Review successfully updated.'
       redirect_to tattoo_path(@tattoo)
-    elsif !signed_in?
-      authenticate_user!
     else
       flash[:error] = @review.errors.full_messages.join(", ")
       render :edit
@@ -42,12 +42,12 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @tattoo = @review.tattoo
-    if signed_in? && current_user == @review.user
+    if !signed_in?
+      authenticate_user!
+    elsif signed_in? && current_user == @review.user
       @review.destroy
       flash[:notice] = 'Review deleted successfully.'
       redirect_to tattoo_path(@tattoo)
-    elsif !signed_in?
-      authenticate_user!
     else
       flash[:notice] = 'You have no permission to delete this posting'
       redirect_to tattoo_path(@tattoo)

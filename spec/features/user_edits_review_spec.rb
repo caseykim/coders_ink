@@ -15,49 +15,70 @@ feature 'User edits a review posting', %(
 
   let(:user) { FactoryGirl.create(:user_with_tattoos) }
   let(:another_user) { FactoryGirl.create(:user_with_tattoos) }
-
-  before do
-    login(user)
+  let(:another_user_review) do
+    FactoryGirl.create(:review, user: another_user, tattoo: user.tattoos.first)
+  end
+  let(:user_review) do
+    FactoryGirl.create(:review, user: user, tattoo: another_user.tattoos.last)
   end
 
-  scenario "user cannot edit other user's review" do
-    tattoo = user.tattoos.first
-    FactoryGirl.create(:review, user: another_user, tattoo: tattoo)
-    visit tattoo_path(tattoo)
 
-    expect(page).to_not have_content('Edit Review')
+  context "user is not signed in" do
+    scenario "users not logged in cannot edit reviews" do
+      tattoo = user.tattoos.first
+      visit tattoo_path(tattoo)
+
+      expect(page).to_not have_content('Edit Review')
+    end
   end
 
-  scenario 'user edits a review from tattoo details page' do
-    tattoo = another_user.tattoos.last
-    FactoryGirl.create(:review, user: user, tattoo: tattoo)
-    visit tattoo_path(tattoo)
-    click_link 'Edit Review'
-    expect(page).to have_content('Update Review')
-    expect(page).to have_content('Rating')
-    expect(page).to have_content('Review')
+  context "user is signed in" do
 
-    fill_in 'Rating', with: "5"
-    fill_in 'Review', with: "WHOO"
-    click_button 'Submit'
-    expect(page).to have_content('Review successfully updated.')
-    expect(page).to have_content('5')
-    expect(page).to have_content('WHOO')
-  end
+    before do
+      login(user)
+      another_user
+      another_user_review
+      user_review
+    end
 
-  scenario 'user edits a review with an invalid form' do
-    tattoo = another_user.tattoos.last
-    FactoryGirl.create(:review, user: user, tattoo: tattoo)
-    visit tattoo_path(tattoo)
-    click_link 'Edit Review'
-    expect(page).to have_content('Update Review')
-    expect(page).to have_content('Rating')
-    expect(page).to have_content('Review')
+    scenario "user cannot edit other user's review" do
+      tattoo = user.tattoos.first
+      visit tattoo_path(tattoo)
 
-    fill_in 'Rating', with: "500"
+      expect(page).to_not have_content('Edit Review')
+    end
 
-    click_button 'Submit'
-    expect(page).to have_content('Rating Must be 1 through 5')
+    scenario 'user edits a review from tattoo details page' do
+      tattoo = another_user.tattoos.last
+      visit tattoo_path(tattoo)
+      click_link 'Edit Review'
+      expect(page).to have_content('Update Review')
+      expect(page).to have_content('Rating')
+      expect(page).to have_content('Review')
+
+      fill_in 'Rating', with: "5"
+      fill_in 'Review', with: "WHOO"
+      
+      click_button 'Submit'
+      expect(page).to have_content('Review successfully updated.')
+      expect(page).to have_content('5')
+      expect(page).to have_content('WHOO')
+    end
+
+    scenario 'user edits a review with an invalid form' do
+      tattoo = another_user.tattoos.last
+      visit tattoo_path(tattoo)
+      click_link 'Edit Review'
+      expect(page).to have_content('Update Review')
+      expect(page).to have_content('Rating')
+      expect(page).to have_content('Review')
+
+      fill_in 'Rating', with: "500"
+
+      click_button 'Submit'
+      expect(page).to have_content('Rating Must be 1 through 5')
+    end
+
   end
 
 end

@@ -11,6 +11,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'carrierwave'
 gem 'devise'
 gem 'foundation-rails'
+gem 'dotenv-rails'
+gem 'fog'
 
 group :development, :test do
   gem 'database_cleaner'

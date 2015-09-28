@@ -18,7 +18,7 @@ feature "User views user detail page", %(
 
     expect(page).to have_content(user.username)
     expect(page).to have_content(user.email)
-    expect(page).to have_css("img[src*='#{user.avatar}']")
+    expect(page).to have_css("img[src*='#{user.profile_photo}']")
   end
 
   scenario "user does not see other user's information" do

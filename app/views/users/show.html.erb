@@ -1,7 +1,7 @@
 <div class="row">
   <div class="section-box text-center panel large-6 medium-8 small-12
   large-centered medium-centered small-centered columns">
-    <%= image_tag(@user.avatar, id: "user_profile") %>
+    <%= image_tag(@user.profile_photo, class: "user-profile") %>
     <h1 class="section-title"><%= @user.username %></h1>
     <h3 class="section-title"><%= @user.email %></h3>
   </div>

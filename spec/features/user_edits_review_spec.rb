@@ -6,11 +6,11 @@ feature 'User edits a review posting', %(
   So that I can change my mind on a tattoo
 
   Acceptance Criteria
-  [ ] I must be the owner of the review to edit
-  [ ] I must visit the tattoo details page
-  [ ] I must click an Edit Review link or button
-  [ ] I must get a success alert for the update
-  [ ] I must get an error alert if the update fails
+  [x] I must be the owner of the review to edit
+  [x] I must visit the tattoo details page
+  [x] I must click an Edit Review link or button
+  [x] I must get a success alert for the update
+  [x] I must get an error alert if the update fails
 ) do
 
   let(:user) { FactoryGirl.create(:user_with_tattoos) }

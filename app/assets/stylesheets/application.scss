@@ -24,7 +24,14 @@ body {
   background-size: cover;
 }
 
-#user_profile {
+.main {
+  margin: auto;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  width: 75%;
+}
+
+.user-profile {
   max-height: 150px;
   max-width: 150px;
 }
@@ -37,4 +44,17 @@ body {
 .tattoo-thumbnail {
   max-height: 150px;
   max-width: 200px;
+}
+
+.account-settings {
+  background-color: rgb(209, 188, 163);
+  color: rgb(122, 15, 9);
+  padding: 10px;
+}
+
+.cancel-account {
+  background-color: rgb(34, 34, 34);
+  color: rgb(190, 184, 179);
+  margin: auto;
+  text-align: center;
 }

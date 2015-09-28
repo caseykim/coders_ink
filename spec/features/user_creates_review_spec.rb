@@ -58,5 +58,18 @@ So that I can share my stupid opinion with the world
       visit tattoo_path(user.tattoos.last)
       expect(page).to_not have_button("Submit")
     end
+
+    scenario "user tries to review a tattoo twice" do
+      fill_in "Rating", with: 4
+      fill_in "Review", with: "Not too shabby"
+      click_button "Submit"
+
+      fill_in "Rating", with: 5
+      fill_in "Review", with: "WOW"
+      click_button "Submit"
+
+      expect(page).to have_content("User has already reviewed this tattoo")
+      expect(page).to_not have_content("WOW")
+    end
   end
 end

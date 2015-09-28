@@ -16,9 +16,11 @@
     <h5 class="text-center">Average Rating: <%= @tattoo.average_rating %>/5</h5>
   <% end %>
     <ul class="button-group even-2">
-      <li><%= link_to 'Edit', edit_tattoo_path(@tattoo), class: "button tiny" %></li>
-      <li><%= button_to 'Delete', @tattoo, method: :delete,
+      <% if @tattoo.user == current_user %>
+        <li><%= link_to 'Edit', edit_tattoo_path(@tattoo), class: "button tiny" %></li>
+        <li><%= button_to 'Delete', @tattoo, method: :delete,
           class: "button tiny alert" %></li>
+      <% end %>
     </ul>
 </div>
 
@@ -54,18 +56,20 @@
   <% end %>
 </div>
 
-<div class="section-box panel large-6 medium-8 small-12 large-centered small-centered columns">
-<h4>Rate this Ink</h4>
-  <div class="review_box small-12">
-    <%= form_for([@tattoo, @review]) do |f| %>
+<% if @tattoo.user != current_user && signed_in? %>
+  <div class="section-box panel large-6 medium-8 small-12 large-centered small-centered columns">
+    <h4>Rate this Ink</h4>
+    <div class="review_box small-12">
+      <%= form_for([@tattoo, @review]) do |f| %>
 
-      <%= f.label :rating %>
-      <%= f.number_field :rating  %>
+        <%= f.label :rating %>
+        <%= f.number_field :rating  %>
 
-      <%= f.label :body, "Review" %>
-      <%= f.text_area :body %>
+        <%= f.label :body, "Review" %>
+        <%= f.text_area :body %>
 
-      <%= f.submit "Submit", class: "submit_class button expand round" %>
-    <% end %>
+        <%= f.submit "Submit", class: "submit_class button expand round" %>
+        <% end %>
+    </div>
   </div>
-</div>
+<% end %>

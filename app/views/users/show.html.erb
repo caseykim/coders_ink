@@ -1,4 +1,4 @@
-<div class="row"> 
+<div class="row">
   <div class="section-box text-center panel large-6 medium-8 small-12
   large-centered medium-centered small-centered columns">
     <%= image_tag(@user.avatar, id: "user_profile") %>
@@ -16,9 +16,11 @@
         <div class="panel">
           <h5 class="text-center"><%= tattoo.title %></h5>
           <ul class="button-group even-2">
-            <li><%= link_to 'Edit', edit_tattoo_path(tattoo), class: "button tiny" %></li>
-            <li class="text-center"><%= button_to 'Delete', tattoo,
-                method: :delete, id: "#{tattoo.id}", class: "button tiny alert" %></li>
+            <% if tattoo.user == current_user %>
+              <li><%= link_to 'Edit', edit_tattoo_path(tattoo), class: "button tiny" %></li>
+              <li class="text-center"><%= button_to 'Delete', tattoo,
+                  method: :delete, id: "#{tattoo.id}", class: "button tiny alert" %></li>
+            <% end %>
           </ul>
         </div>
       </div>

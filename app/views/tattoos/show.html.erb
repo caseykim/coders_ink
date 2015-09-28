@@ -1,30 +1,35 @@
-<div class="panel large-centered large-4 columns">
-  <h1><%= @tattoo.title %></h1>
-  <%= image_tag(@tattoo.url, class: "tattoo_image") %>
+<div class="section-box panel large-centered small-centered
+ large-4 medium-6 small-8 columns">
+  <h1 class="section-title text-center"><%= @tattoo.title %></h1>
+  <%= image_tag(@tattoo.url, class: "tattoo_image large-centered small-centered") %>
   <br>
   <% if @tattoo.description.present? %>
-    <h3><%= @tattoo.description %></h3>
+    <h3 class="text-center"><%= @tattoo.description %></h3>
   <% end %>
   <% if @tattoo.studio.present? %>
-    <h5>Studio: <%= @tattoo.studio %></h5>
+    <h5 class="text-center">Studio: <%= @tattoo.studio %></h5>
   <% end %>
   <% if @tattoo.artist.present? %>
-    <h5>Artist: <%= @tattoo.artist %></h5>
+    <h5 class="text-center">Artist: <%= @tattoo.artist %></h5>
   <% end %>
   <% unless @tattoo.reviews.empty? %>
-    <h5>Average Rating: <%= @tattoo.average_rating %>/5</h5>
+    <h5 class="text-center">Average Rating: <%= @tattoo.average_rating %>/5</h5>
   <% end %>
-    <%= link_to 'Edit Tattoo', edit_tattoo_path(@tattoo) %>
-    <%= button_to 'Delete Tattoo', @tattoo, method: :delete %>
+    <ul class="button-group even-2">
+      <li><%= link_to 'Edit', edit_tattoo_path(@tattoo), class: "button tiny" %></li>
+      <li><%= button_to 'Delete', @tattoo, method: :delete,
+          class: "button tiny alert" %></li>
+    </ul>
 </div>
 
-<div class="reviews_list">
+<div class="reviews_list large-6 medium-8 small-12 large-centered small-centered columns">
   <% if @tattoo.reviews.empty? %>
+  <div class="panel">
     <h6>No reviews yet, add one?</h6>
+  </div>
   <% else %>
     <table>
       <% @reviews.each do |review| %>
-
         <tr>
           <td>
             <%=link_to image_tag("/thumbup.png"),
@@ -36,7 +41,7 @@
           review_downvote_path(review),
           method: :post
           %></td>
-          <td><%= review.rating %></td>
+          <td>Rating: <%= review.rating %></td>
           <td><%= review.body %></td>
           <td>Review by: <%= review.user.username %></td>
         </tr>
@@ -45,8 +50,9 @@
   <% end %>
 </div>
 
+<div class="section-box panel large-6 medium-8 small-12 large-centered small-centered columns">
 <h4>Rate this Ink</h4>
-  <div class="review_box small-12 medium-6 large-4">
+  <div class="review_box small-12">
     <%= form_for([@tattoo, @review]) do |f| %>
 
       <%= f.label :rating %>
@@ -56,6 +62,6 @@
       <%= f.text_area :body %>
 
       <%= f.submit "Submit", class: "submit_class button expand round" %>
-
     <% end %>
   </div>
+</div>

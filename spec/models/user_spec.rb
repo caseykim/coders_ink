@@ -9,6 +9,8 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:username) }
 
+  it { should validate_length_of(:username).is_at_most(15) }
+
   it { should have_valid(:username).when("example-postink") }
   it { should_not have_valid(:username).when(nil, "") }
 

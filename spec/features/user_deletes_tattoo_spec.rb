@@ -25,7 +25,7 @@ feature 'User deletes a tattoo posting', %(
     another_user = FactoryGirl.create(:user_with_tattoos)
     tattoo = another_user.tattoos.first
     visit tattoo_path(tattoo)
-    click_button 'Delete Tattoo'
+    click_button 'Delete'
 
     expect(page).to have_content('no permission to delete')
   end
@@ -33,7 +33,7 @@ feature 'User deletes a tattoo posting', %(
   scenario 'user deletes a tattoo posting from tattoo details page' do
     tattoo = user.tattoos.last
     visit tattoo_path(tattoo)
-    click_button 'Delete Tattoo'
+    click_button 'Delete'
 
     expect(page).to have_content('Tattoo deleted successfully.')
   end
@@ -41,7 +41,7 @@ feature 'User deletes a tattoo posting', %(
   scenario 'user deletes a tattoo posting from my profile page' do
     id_css = "##{user.tattoos.last.id}"
     visit user_path(user)
-    find(id_css, 'Delete Tattoo').click
+    find(id_css, 'Delete').click
 
     expect(page).to have_content('Tattoo deleted successfully.')
   end

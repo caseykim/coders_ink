@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "User downvotes a review", %(
-As a user
+As a usertat
 I want to downvotes a review
 So that I can decide which reviews are BAD
 
@@ -13,14 +13,13 @@ So that I can decide which reviews are BAD
 ) do
 
   scenario 'visitor downvotes a review' do
-    tattoo = FactoryGirl.create(:tattoo)
     user = FactoryGirl.create(:user, username: "stever")
     user2 = FactoryGirl.create(:user)
+    tattoo = FactoryGirl.create(:tattoo)
     review = FactoryGirl.create(:review, tattoo: tattoo, user: user)
     login(user2)
 
     visit tattoo_path(tattoo)
-
     score = review.score
     find(:xpath, "//a[@href='/reviews/#{review.id}/downvote']").click
     count = find(".score_#{review.id}").text

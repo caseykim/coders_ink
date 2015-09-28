@@ -13,6 +13,7 @@ gem 'devise'
 gem 'foundation-rails'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'capybara'

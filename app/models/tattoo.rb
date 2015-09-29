@@ -5,6 +5,8 @@ class Tattoo < ActiveRecord::Base
   validates :url, presence: true
   validates :user_id, presence: true
 
+  paginates_per 6
+
   def average_rating
     sum = 0.0
     reviews.each do |review|

@@ -1,40 +1,39 @@
-<div class="large-12 columns fixed">
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
+<div class="fixed">
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
 
-        <li class="name">
-          <h1>
-            <a href="#">
-              CodersInk
-            </a>
-          </h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+      <li class="name">
+        <h1>
+          <a href="/tattoos">
+            CodersInk
+          </a>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="left">
+        <%- if current_user -%>
+          <li><%= link_to 'All Tattoos', tattoos_path %></li>
+          <li><%= link_to 'All Users', users_path %></li>
+          <li><%= link_to "Add A Tattoo", new_tattoo_path %></li>
+          <li><%= link_to 'Account Settings', edit_user_registration_path %></li>
+          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <%- else -%>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <%- end -%>
       </ul>
 
-      <section class="top-bar-section">
-        <ul class="left">
-          <%- if current_user -%>
-            <li><%= link_to 'All Tattoos', tattoos_path %></li>
-            <li><%= link_to 'All Users', users_path %></li>
-            <li><%= link_to "Add A Tattoo", new_tattoo_path %></li>
-            <li><%= link_to 'Account Settings', edit_user_registration_path %></li>
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <%- else -%>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
-          <%- end -%>
-        </ul>
-
-        <ul class="right">
-          <li class="search">
-            <%= form_tag(tattoos_path, :method => "get", id: "search-form") do %>
-              <li><%= text_field_tag :search, params[:search], placeholder: "Search Tattoos" %></li>
-              <li><%= submit_tag "Search", :name => nil, class: "small button" %></li>
-            <% end %>
-          </li>
-        </ul>
-      </section>
-    </nav>
-  </div>
+      <ul class="right">
+        <li class="search">
+          <%= form_tag(tattoos_path, :method => "get", id: "search-form") do %>
+            <li><%= text_field_tag :search, params[:search], placeholder: "Search Tattoos" %></li>
+            <li><%= submit_tag "Search", :name => nil, class: "small button" %></li>
+          <% end %>
+        </li>
+      </ul>
+    </section>
+  </nav>
 </div>

@@ -33,6 +33,21 @@ footer {
   padding-top: 15px;
 }
 
+.page-nav {
+  margin-top: 35px;
+  padding-left: 15px;
+  background-color: gray;
+  color: black;
+}
+
+.page-nav a {
+  color: black;
+}
+
+.page-nav a:active {
+  color: white;
+}
+
 .section-title {
   font-family: 'Miltonian Tattoo', cursive;
 }

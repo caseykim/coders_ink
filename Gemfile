@@ -13,6 +13,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'dotenv-rails'
 gem 'fog'
+gem 'kaminari'
 
 group :development, :test do
   gem 'database_cleaner'

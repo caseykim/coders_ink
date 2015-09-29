@@ -13,4 +13,8 @@ class Tattoo < ActiveRecord::Base
     sum = sum / reviews.length
     sum = sum.round(1)
   end
+
+  def self.search(query)
+    where("title like ?", "%#{query}%")
+  end
 end

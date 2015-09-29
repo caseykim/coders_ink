@@ -44,6 +44,7 @@ So that I can share my stupid opinion with the world
       expect(page).to have_content("Celtic Armband")
       expect(page).to have_content(4)
       expect(page).to have_content("Not too shabby")
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
 
     scenario "user fills out form incorrectly" do

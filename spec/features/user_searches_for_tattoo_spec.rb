@@ -19,15 +19,11 @@ feature "User searches for a tattoo", %(
 
     visit tattoos_path
     fill_in "Search Tattoos", with: "Celtic"
-
     click_button "Search"
-    
     expect(page).to have_content(tattoo.title)
     expect(page).to have_content(tattoo2.title)
     expect(page).to have_content(tattoo3.title)
     expect(page).to have_content(tattoo4.title)
-
     expect(page).to_not have_content(tattoo5.title)
   end
-
 end

@@ -21,7 +21,7 @@ feature "Admin deletes an obnoxious user", %(
     login(admin)
     visit users_path
     first_user = User.first
-    find("##{first_user.id}", "Delete").click
+    find("#delete-#{first_user.id}", "Delete").click
 
     expect(page).to have_content('User deleted successfully.')
     User.all.each do |user|

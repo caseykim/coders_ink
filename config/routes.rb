@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'tattoos#index'
   devise_for :users, controllers: { registrations: :registrations }
 
-  resources :users, only: [:index, :show, :destroy]
+  resources :users, only: [:index, :show, :destroy] do
+    post 'make_admin'
+  end
 
   resources :tattoos do
     resources :reviews, only: [:new, :create]

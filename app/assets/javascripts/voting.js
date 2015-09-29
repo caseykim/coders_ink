@@ -7,8 +7,7 @@ $(".upvote").on("click", function(event) {
     url: ("/reviews/" + ReviewId + "/upvote"),
     data: { review_id: ReviewId },
     dataType: "json"
-  })
-  .done(function(data){
+  }).done(function(data){
     $($t.siblings("#score")).text(data);
   })
 });
@@ -22,8 +21,7 @@ $(".downvote").on("click", function(event) {
     url: ("/reviews/" + ReviewId + "/downvote"),
     data: { review_id: ReviewId },
     dataType: "json"
-  })
-  .done(function(data){
+  }).done(function(data){
     $($t.siblings("#score")).text(data);
   })
 });

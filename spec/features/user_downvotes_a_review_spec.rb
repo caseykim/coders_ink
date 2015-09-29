@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'selenium-webdriver'
 
 feature "User downvotes a review", %(
 As a usertat

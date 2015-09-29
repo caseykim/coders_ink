@@ -13,7 +13,7 @@ feature 'Admin deletes a tattoo posting', %(
   let(:admin) { FactoryGirl.create(:user, role: "admin") }
 
   before do
-    5.times { FactoryGirl.create(:tattoo ) }
+    5.times { FactoryGirl.create(:tattoo) }
   end
 
   scenario "Admin sees 'Delete' buttons for every tattoo posting" do
@@ -48,8 +48,8 @@ feature 'Admin deletes a tattoo posting', %(
     visit tattoos_path
     last_tattoo = Tattoo.last
 
-    expect { find("#delete-#{last_tattoo.id}", "Delete").click }
-      .to change(Tattoo, :count).by(-1)
+    expect { find("#delete-#{last_tattoo.id}", "Delete").click }.
+      to change(Tattoo, :count).by(-1)
     expect(page).to have_content('Tattoo deleted successfully.')
     Tattoo.all.each do |tattoo|
       expect(page).to have_content(tattoo.title)

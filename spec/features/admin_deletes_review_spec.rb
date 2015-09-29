@@ -32,8 +32,8 @@ feature 'Admin deletes a review', %(
     tattoo = review.tattoo
     visit tattoo_path(tattoo)
 
-    expect { find(".delete_review_#{review.id}").click }
-      .to change(Review, :count).by(-1)
+    expect { find(".delete_review_#{review.id}").click }.
+      to change(Review, :count).by(-1)
     expect(page).to have_content('Review deleted successfully.')
     expect(current_path).to eq tattoo_path(tattoo)
   end

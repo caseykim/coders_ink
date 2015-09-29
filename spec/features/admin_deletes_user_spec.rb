@@ -34,7 +34,7 @@ feature "Admin deletes an obnoxious user", %(
     other_user = User.first
     login(user)
 
-    expect{ page.driver.submit :delete, "/users/#{other_user.id}", {} }.
+    expect { page.driver.submit :delete, "/users/#{other_user.id}", {} }.
       to raise_error(ActionController::RoutingError)
   end
 

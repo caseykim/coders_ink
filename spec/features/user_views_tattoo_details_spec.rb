@@ -6,10 +6,10 @@ feature "User views a specific tattoo", %(
   So that I could read details and reviews on that tattoo
 
   Acceptance Criteria
-  [ ] I must visit the url of the tattoo.id
-  [ ] I must see the tattoo's title
-  [ ] I must see the tattoo's description, if one exists
-  [ ] I must see the picture of the tattoo that the url directs to
+  [X] I must visit the url of the tattoo.id
+  [X] I must see the tattoo's title
+  [X] I must see the tattoo's description, if one exists
+  [X] I must see the picture of the tattoo that the url directs to
 ) do
 
   let!(:tattoo) do

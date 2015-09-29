@@ -36,6 +36,15 @@ feature 'Admin views a list of users', %(
     end
   end
 
+  scenario "Admin sees other users' profile photos" do
+    login(admin)
+    visit users_path
+
+    User.all.each do |user|
+      expect(page).to have_css("img[src*='#{user.profile_photo}']")
+    end
+  end
+
   scenario "User cannot see the list of users" do
     user = FactoryGirl.create(:user)
     login(user)
@@ -43,4 +52,22 @@ feature 'Admin views a list of users', %(
     expect{ visit users_path }.to raise_error(ActionController::RoutingError)
   end
 
+  scenario "Admin sees a maximum of 18 users per page" do
+    20.times { FactoryGirl.create(:user) }
+    users = User.all
+    login(admin)
+    visit users_path
+
+    expect(page).to have_content(users.first.username)
+    expect(page).to have_content(users.first.username)
+    expect(page).to_not have_content(users.last.username)
+    expect(page).to_not have_content(users.last.username)
+
+    visit 'users/?page=2'
+
+    expect(page).to have_content(users.last.username)
+    expect(page).to have_content(users.last.username)
+    expect(page).to_not have_content(users.first.username)
+    expect(page).to_not have_content(users.first.username)
+  end
 end

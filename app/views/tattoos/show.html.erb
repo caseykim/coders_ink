@@ -22,6 +22,9 @@
         <li><%= link_to 'Edit', edit_tattoo_path(@tattoo), class: "button tiny" %></li>
         <li><%= button_to 'Delete', @tattoo, method: :delete,
           class: "button tiny alert" %></li>
+      <% elsif current_user && current_user.admin? %>
+        <li><%= button_to 'Delete', @tattoo, method: :delete,
+          class: "button tiny alert" %></li>
       <% end %>
     </ul>
 </div>
@@ -47,6 +50,11 @@
           <% if review.user == current_user %>
             <td><%= link_to 'Edit Review', edit_review_path(review), class: "edit_review" %></td>
             <td><%= button_to 'Delete Review', review, method: :delete, class: "delete_review" %></td>
+          <% elsif current_user && current_user.admin? %>
+            <td>
+              <%= button_to 'Delete Review', review,
+                method: :delete, class: "delete_review_#{review.id}" %>
+            </td>
           <% end %>
         </tr>
       <% end %>

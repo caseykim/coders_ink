@@ -3,12 +3,16 @@
   <h2 class="section-title text-center">Users</h2>
 </div>
 
-<div id="tattoo_listings">
+<div>
   <% @users.each do |user| %>
     <div class="large-2 medium-4 small-6 columns">
-      <div class="panel text-center">
+      <div class="panel text-center tattoo-listing">
         <%=image_tag(user.profile_photo, class: "tattoo-thumbnail")%>
-        <p><%= link_to user.username, user_path(user) %></p>
+        <ul>
+          <li><%= link_to user.username, user_path(user) %></li>
+          <li><%= user.email %></li>
+          <li><%= button_to 'Delete', user_path(user), method: :delete, id: "#{user.id}" %></li>
+        </ul>
       </div>
     </div>
   <% end %>

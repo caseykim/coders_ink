@@ -23,6 +23,12 @@ FactoryGirl.define do
     user
     studio "Inflicting Ink"
     artist "Jeff Goyette"
+
+    factory :tattoo_with_reviews do
+      after(:create) do |tattoo|
+        5.times { create(:review, tattoo: tattoo) }
+      end
+    end
   end
 
   factory :review do

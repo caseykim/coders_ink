@@ -47,7 +47,7 @@ class TattoosController < ApplicationController
   def update
     @tattoo = Tattoo.find(params[:id])
     if @tattoo.update_attributes(tattoo_params)
-      flash[:notice] = 'Tattoo successfully updated.'
+      flash[:success] = 'Tattoo successfully updated.'
       redirect_to tattoo_path(@tattoo)
     elsif !signed_in?
       authenticate_user!
@@ -59,9 +59,9 @@ class TattoosController < ApplicationController
 
   def destroy
     @tattoo = Tattoo.find(params[:id])
-    if signed_in? && current_user == @tattoo.user
+    if signed_in? && (current_user == @tattoo.user || current_user.admin?)
       @tattoo.destroy
-      flash[:notice] = 'Tattoo deleted successfully.'
+      flash[:success] = 'Tattoo deleted successfully.'
       redirect_to tattoos_path
     elsif !signed_in?
       authenticate_user!

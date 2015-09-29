@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
   paginates_per 18
+
+  def admin?
+    role == "admin"
+  end
 end

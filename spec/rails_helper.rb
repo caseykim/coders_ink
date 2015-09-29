@@ -56,7 +56,6 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 end
 
-
 class ActiveRecord::Base
   mattr_accessor :shared_connection
   @@shared_connection = nil

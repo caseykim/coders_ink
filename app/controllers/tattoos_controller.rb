@@ -1,6 +1,10 @@
 class TattoosController < ApplicationController
   def index
-    @tattoos = Tattoo.order(id: :desc)
+    if params[:search]
+      @tattoos = Tattoo.search(params[:search])
+    else
+      @tattoos = Tattoo.order(id: :desc)
+    end
   end
 
   def show

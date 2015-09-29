@@ -20,8 +20,8 @@ feature "Admin deletes an obnoxious user", %(
   scenario "I must see a button 'Delete' on users index page" do
     login(admin)
     visit users_path
-    user = User.first
-    find("##{user.id}", "Delete").click
+    first_user = User.first
+    find("##{first_user.id}", "Delete").click
 
     expect(page).to have_content('User deleted successfully.')
     User.all.each do |user|
@@ -35,7 +35,7 @@ feature "Admin deletes an obnoxious user", %(
     login(user)
 
     expect{ page.driver.submit :delete, "/users/#{other_user.id}", {} }.
-      to raise_error( ActionController::RoutingError )
+      to raise_error(ActionController::RoutingError)
   end
 
 end

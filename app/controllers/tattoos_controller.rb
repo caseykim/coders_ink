@@ -59,7 +59,7 @@ class TattoosController < ApplicationController
 
   def destroy
     @tattoo = Tattoo.find(params[:id])
-    if signed_in? && ( current_user == @tattoo.user || current_user.admin? )
+    if signed_in? && (current_user == @tattoo.user || current_user.admin?)
       @tattoo.destroy
       flash[:success] = 'Tattoo deleted successfully.'
       redirect_to tattoos_path

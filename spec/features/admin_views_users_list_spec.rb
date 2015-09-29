@@ -40,7 +40,7 @@ feature 'Admin views a list of users', %(
     user = FactoryGirl.create(:user)
     login(user)
 
-    expect{ visit users_path }.to raise_error( ActionController::RoutingError )
+    expect{ visit users_path }.to raise_error(ActionController::RoutingError)
   end
 
 end

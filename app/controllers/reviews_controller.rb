@@ -56,7 +56,7 @@ class ReviewsController < ApplicationController
 
   def upvote
     review = Review.find(params[:review_id])
-    tattoo = review.tattoo
+    @tattoo = review.tattoo
     vote = Vote.find_by(user: current_user, review: review)
     if vote
       if vote.score == 1
@@ -68,7 +68,7 @@ class ReviewsController < ApplicationController
     else
       Vote.create(user: current_user, review: review, score: 1)
     end
-    redirect_to tattoo_path(tattoo)
+    render json: review.score
   end
 
   def downvote
@@ -85,7 +85,7 @@ class ReviewsController < ApplicationController
     else
       Vote.create(user: current_user, review: review, score: -1)
     end
-    redirect_to tattoo_path(tattoo)
+    render json: review.score
   end
 
   protected

@@ -1,0 +1,50 @@
+@import "foundation_and_overrides";
+/* Add imports of custom sass/scss files here */
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+ */
+
+body {
+  background: url("/background.jpg") no-repeat center center fixed;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+#user_profile {
+  max-height: 150px;
+  max-width: 150px;
+}
+
+.tattoo-image {
+  max-height: 450px;
+  max-width: 500px;
+}
+
+.side-bar {
+  background-color: #333333;
+  bottom: 0;
+  padding-top: 25px;
+  position: fixed;
+  top: 40px;
+  width: 125px;
+}
+
+.tattoo-thumbnail {
+  max-height: 150px;
+  max-width: 200px;
+}

@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'selenium-webdriver'
 
 feature "User downvotes a review", %(
 As a user
@@ -12,7 +13,7 @@ So that I can decide which reviews are BAD
   [√] The score must update
 ) do
 
-  scenario 'visitor downvotes a review' do
+  scenario 'visitor downvotes a review', js: true do
     tattoo = FactoryGirl.create(:tattoo)
     user = FactoryGirl.create(:user, username: "stever")
     user2 = FactoryGirl.create(:user)
@@ -22,13 +23,13 @@ So that I can decide which reviews are BAD
     visit tattoo_path(tattoo)
 
     score = review.score
-    find(:xpath, "//a[@href='/reviews/#{review.id}/downvote']").click
+    find(".downvote").click
     count = find(".score_#{review.id}").text
 
     expect(count).to have_content("#{score - 1}")
   end
 
-  scenario 'visitor downvotes a review they previously upvoted' do
+  scenario 'visitor downvotes a review they previously upvoted', js: true do
     tattoo = FactoryGirl.create(:tattoo)
     user = FactoryGirl.create(:user, username: "stever")
     user2 = FactoryGirl.create(:user)
@@ -39,13 +40,13 @@ So that I can decide which reviews are BAD
     visit tattoo_path(tattoo)
 
     score = review.score
-    find(:xpath, "//a[@href='/reviews/#{review.id}/downvote']").click
+    find(".downvote").click
     count = find(".score_#{review.id}").text
 
     expect(count).to have_content("#{score - 2}")
   end
 
-  scenario 'visitor removes their downvote' do
+  scenario 'visitor removes their downvote', js: true do
     tattoo = FactoryGirl.create(:tattoo)
     user = FactoryGirl.create(:user, username: "stever")
     user2 = FactoryGirl.create(:user)
@@ -56,7 +57,7 @@ So that I can decide which reviews are BAD
     visit tattoo_path(tattoo)
 
     score = review.score
-    find(:xpath, "//a[@href='/reviews/#{review.id}/downvote']").click
+    find(".downvote").click
     count = find(".score_#{review.id}").text
 
     expect(count).to have_content("#{score + 1}")

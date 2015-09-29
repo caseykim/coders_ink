@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'carrierwave'
 gem 'devise'
 gem 'foundation-rails'
+gem 'selenium-webdriver'
 
 group :development, :test do
   gem 'pry-rails'

@@ -13,7 +13,7 @@ feature 'Admin deletes a tattoo posting', %(
   let(:admin) { FactoryGirl.create(:user, role: "admin") }
 
   before do
-    5.times { FactoryGirl.create(:user_with_tattoos) }
+    5.times { FactoryGirl.create(:tattoo) }
   end
 
   scenario "Admin sees 'Delete' buttons for every tattoo posting" do

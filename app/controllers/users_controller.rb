@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authorize_user, except: [:show]
 
   def index
-    @users = User.all
+    @users = User.all.page params[:page]
   end
 
   def show

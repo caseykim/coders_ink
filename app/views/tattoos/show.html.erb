@@ -1,6 +1,8 @@
 <div class="section-box panel large-centered small-centered
  large-4 medium-6 small-8 columns">
   <h1 class="section-title text-center"><%= @tattoo.title %></h1>
+  <h5 class="text-center">Posted by: <%= link_to @tattoo.user.username, user_path(@tattoo.user) %></h5>
+  </br>
   <%= image_tag(@tattoo.url, class: "tattoo_image large-centered small-centered") %>
   <br>
   <% if @tattoo.description.present? %>

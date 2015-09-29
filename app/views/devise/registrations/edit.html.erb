@@ -35,8 +35,9 @@
         </div>
 
         <div class="field">
-          <%= f.label :avatar %>
-          <%= f.text_field :avatar, autofocus: true %>
+          <label>My profile photo</label>
+          <%= image_tag(@user.profile_photo) if @user.profile_photo %>
+          <%= f.file_field :profile_photo %>
         </div>
 
         <div class="actions">
@@ -45,6 +46,7 @@
 
         <%= link_to "Back", :back, class: "small secondary button right" %>
       <% end %>
+
     </fieldset>
   </div>
 

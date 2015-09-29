@@ -12,8 +12,12 @@ gem 'carrierwave'
 gem 'devise'
 gem 'foundation-rails'
 gem 'selenium-webdriver'
+gem 'dotenv-rails'
+gem 'fog'
+gem 'kaminari'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'capybara'

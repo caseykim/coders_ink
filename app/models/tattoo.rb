@@ -5,6 +5,8 @@ class Tattoo < ActiveRecord::Base
   validates :url, presence: true
   validates :user_id, presence: true
 
+  paginates_per 6
+
   def average_rating
     sum = 0.0
     reviews.each do |review|
@@ -12,5 +14,9 @@ class Tattoo < ActiveRecord::Base
     end
     sum = sum / reviews.length
     sum = sum.round(1)
+  end
+
+  def self.search(query)
+    where("title like ?", "%#{query}%")
   end
 end

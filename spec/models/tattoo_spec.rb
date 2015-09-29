@@ -17,7 +17,7 @@ RSpec.describe Tattoo, type: :model do
     it { should validate_length_of(:title).is_at_most(20) }
 
     it "should have a user assigned to it" do
-      expect(tattoo.user_id).to eq(1)
+      expect(tattoo.user).to be_instance_of(User)
     end
 
     it "should have a title" do

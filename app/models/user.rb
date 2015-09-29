@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true, length: { maximum: 15 }
 
   mount_uploader :profile_photo, ProfilePhotoUploader
+
+  def admin?
+    role == "admin"
+  end
 end

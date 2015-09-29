@@ -6,8 +6,8 @@ feature "User views all tattoos", %(
   So that I could read or write reviews for tattoo
 
   Acceptance Criteria
-  [ ] I must see the name of each tattoo posting
-  [ ] I must see the tattoos listed in order, most recently posted first
+  [x] I must see the name of each tattoo posting
+  [x] I must see the tattoos listed in order, most recently posted first
 ) do
 
   scenario 'visitor views tattoos' do

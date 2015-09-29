@@ -44,7 +44,7 @@ class ReviewsController < ApplicationController
     @tattoo = @review.tattoo
     if !signed_in?
       authenticate_user!
-    elsif signed_in? && current_user == @review.user
+    elsif signed_in? && ( current_user == @review.user || current_user.admin? )
       @review.destroy
       flash[:notice] = 'Review deleted successfully.'
       redirect_to tattoo_path(@tattoo)

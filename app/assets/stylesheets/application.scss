@@ -16,6 +16,10 @@
 
  */
 
+$white: #fff;
+$black: #000;
+$gray: #808080;
+
 body {
   background: url("/background.jpg") no-repeat center center fixed;
   -moz-background-size: cover;
@@ -25,7 +29,7 @@ body {
 }
 
 footer {
-  background-color: #000000;
+  background-color: $black;
   height: auto;
 }
 
@@ -34,8 +38,8 @@ footer {
 }
 
 .page-nav {
-  background-color: #808080;
-  color: #000000;
+  background-color: $gray;
+  color: $black;
   margin-top: 35px;
   padding-left: 15px;
 }
@@ -49,14 +53,14 @@ footer {
 }
 
 .section-box {
-  background-color: #808080;
-  border: 1px solid #000000;
+  background-color: $gray;
+  border: 1px solid $black;
   margin: 5px;
   padding: 10px;
 }
 
 .form-background {
-  background-color: #ffffff;
+  background-color: $white;
   margin: 10px;
   padding: 10px;
 }

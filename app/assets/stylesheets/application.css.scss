@@ -1,5 +1,4 @@
 @import "foundation_and_overrides";
-//* Add imports of custom sass/scss files here */
 //*
 //* This is a manifest file that'll be compiled into application.css, which will include all the files
 //* listed below.
@@ -14,8 +13,11 @@
 //*
 //*= require_tree .
 //*= require_self
-//*= require foundation_and_overrides
-//*
+//*= require foundation_and_overrides/
+
+$white: #fff;
+$black: #000;
+$gray: #808080;
 
 body {
   background: url("/background.jpg") no-repeat center center fixed;
@@ -25,9 +27,63 @@ body {
   background-size: cover;
 }
 
-#user_profile {
+footer {
+  background-color: $oil;
+  bottom: 0;
+  color: $white;
+  height: 40px;
+  padding-top: 7px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.tattoo-thumbnail {
+  max-height: 150px;
+  max-width: 200px;
+}
+
+.banner-image {
+  padding-top: 15px;
+}
+
+.section-title {
+  font-family: 'Miltonian Tattoo', cursive;
+}
+
+.section-box {
+  background-color: $gray;
+  border: 1px solid $black;
+  margin: 5px;
+  padding: 10px;
+}
+
+.form-background {
+  background-color: $white;
+  margin: 10px;
+  padding: 10px;
+}
+
+.main {
+  margin: auto;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.account-box {
+  margin: auto;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  width: 75%;
+}
+
+.user-profile {
   max-height: 150px;
   max-width: 150px;
+}
+
+.user-show {
+  float: left;
 }
 
 .tattoo-image {
@@ -35,16 +91,35 @@ body {
   max-width: 500px;
 }
 
-.side-bar {
-  background-color: #333333;
-  bottom: 0;
-  padding-top: 25px;
-  position: fixed;
-  top: 40px;
-  width: 125px;
+.tattoo-listing {
+  overflow: scroll;
+  li { list-style: none; };
+  .tattoo-thumbnail {
+    height: 130px;
+    width: auto;
+  };
 }
 
-.tattoo-thumbnail {
-  max-height: 150px;
-  max-width: 200px;
+.tattoo-box {
+  background-color: rgb(32, 32, 32);
+  margin: auto;
+  text-align: center;
+}
+
+.fillwidth {
+  height: 300px;
+  width: auto;
+}
+
+.account-settings {
+  background-color: rgb(209, 188, 163);
+  color: rgb(122, 15, 9);
+  padding: 10px;
+}
+
+.cancel-account {
+  background-color: rgb(34, 34, 34);
+  color: rgb(190, 184, 179);
+  margin: auto;
+  text-align: center;
 }

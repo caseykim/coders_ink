@@ -43,6 +43,10 @@ footer {
   max-width: 200px;
 }
 
+.upvote, .downvote {
+  min-width: 20px;
+}
+
 .banner-image {
   padding-top: 15px;
 }
@@ -75,6 +79,10 @@ footer {
   padding-bottom: 30px;
   padding-top: 30px;
   width: 75%;
+  max-width: 1000px;
+  input[type="file"] {
+    width: auto;
+  };
 }
 
 .user-profile {

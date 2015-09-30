@@ -33,7 +33,7 @@ feature 'Admin makes a user an admin', %(
     other_user = User.first
     login(user)
 
-    expect { page.driver.submit :post, user_make_admin_path(other_user), {} }.
+    expect { page.driver.submit :post, user_admin_index_path(other_user), {} }.
       to raise_error(ActionController::RoutingError)
   end
 end

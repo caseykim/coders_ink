@@ -15,12 +15,4 @@ class UsersController < ApplicationController
     flash[:success] = 'User deleted successfully.'
     redirect_to users_path
   end
-
-  def make_admin
-    @user = User.find(params[:user_id])
-    @user.role = "admin"
-    @user.save
-    flash[:success] = "#{@user.username} is now an admin."
-    redirect_to users_path
-  end
 end

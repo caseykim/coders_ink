@@ -16,7 +16,7 @@
               method: :delete, id: "delete-#{user.id}", class: "tiny button" %>
           </li>
           <li>
-            <%= button_to 'Make Admin', user_make_admin_path(user),
+            <%= button_to 'Make Admin', user_admin_index_path(user),
               method: :post, id: "admin-#{user.id}", class: "secondary tiny button" %>
           </li>
         </ul>

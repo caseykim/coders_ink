@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20150930195003) do
   enable_extension "plpgsql"
 
   create_table "favorites", force: :cascade do |t|
-    t.integer  "liked",      default: 0, null: false
     t.integer  "tattoo_id"
     t.integer  "user_id"
     t.datetime "created_at"

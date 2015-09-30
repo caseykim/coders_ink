@@ -21,10 +21,11 @@ feature 'Admin makes an admin a regular user', %(
   scenario 'Admin demotes another admin' do
     login(admin)
     id = another_admin.id
+    username = another_admin.username
     visit users_path
     find("#admin-#{id}", 'Remove Admin').click
 
-    expect(page).to have_content("#{another_admin.username} is no longer an admin.")
+    expect(page).to have_content("#{username} is no longer an admin.")
     expect(User.find(id).role).to eq("member")
   end
 

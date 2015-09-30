@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: :registrations }
 
   resources :users, only: [:index, :show, :destroy] do
-    resources :admin, only: [:create]
+    resources :admin, only: :create
   end
+
+  resources :admin, only: :destroy
 
   resources :tattoos do
     resources :reviews, only: [:new, :create]

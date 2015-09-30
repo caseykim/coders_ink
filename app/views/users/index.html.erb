@@ -14,8 +14,13 @@
               method: :delete, id: "delete-#{user.id}", class: "tiny button" %>
           </li>
           <li>
-            <%= button_to 'Make Admin', user_admin_index_path(user),
-              method: :post, id: "admin-#{user.id}", class: "secondary tiny button" %>
+            <% if user.admin? %>
+              <%= button_to 'Remove Admin', admin_path(user),
+                method: :delete, id: "admin-#{user.id}", class: "alert tiny button" %>
+            <% else %>
+              <%= button_to 'Make Admin', user_admin_index_path(user),
+                method: :post, id: "admin-#{user.id}", class: "secondary tiny button" %>
+            <% end %>
           </li>
         </ul>
       </div>

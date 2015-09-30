@@ -31,9 +31,13 @@
 
 <div class="reviews_list large-6 medium-8 small-12 large-centered small-centered columns">
   <% if @tattoo.reviews.empty? %>
-  <div class="panel">
-    <h6>No reviews yet</h6>
-  </div>
+    <div class="panel">
+      <% if @tattoo.user == current_user %>
+        <h6>No one has reviewed your tattoo yet!</h6>
+      <% else %>
+        <h6>No reviews yet, add one?</h6>
+      <% end %>
+    </div>
   <% else %>
     <table>
       <% @reviews.each do |review| %>

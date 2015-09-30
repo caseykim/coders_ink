@@ -43,7 +43,8 @@ footer {
   max-width: 200px;
 }
 
-.upvote, .downvote {
+.upvote,
+.downvote {
   min-width: 20px;
 }
 
@@ -80,10 +81,6 @@ footer {
   padding-top: 30px;
   width: 75%;
   max-width: 1000px;
-
-  input.file {
-    width: auto;
-  };
 }
 
 .user-profile {

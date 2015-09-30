@@ -39,15 +39,15 @@
           </div>
         </div>
 
-        <div class="field text-center">
+        <div class="field">
           <label>My profile photo</label>
           <br/>
           <%= image_tag(@user.profile_photo) if @user.profile_photo %>
           <%= f.file_field :profile_photo %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "Sign up", class: "small button right" %>
+        <div class="actions text-center">
+          <%= f.submit "Sign up", class: "small button" %>
         </div>
       </fieldset>
       <%= render "devise/shared/links" %>

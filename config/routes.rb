@@ -3,11 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: :registrations }
 
   resources :users, only: [:index, :show, :destroy] do
-    # post 'make_admin'
     resources :admin, only: [:create]
   end
-
-  resources :admin, only: [:index, :destroy, :update]
 
   resources :tattoos do
     resources :reviews, only: [:new, :create]

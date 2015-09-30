@@ -30,10 +30,9 @@ feature 'Admin makes a user an admin', %(
 
   scenario 'User cannot make another user admin' do
     user = FactoryGirl.create(:user)
-    other_user = User.first
     login(user)
 
-    expect { page.driver.submit :post, user_admin_index_path(other_user), {} }.
+    expect { page.driver.submit :post, user_admin_index_path(User.first), {} }.
       to raise_error(ActionController::RoutingError)
   end
 end

@@ -27,15 +27,6 @@ body {
   background-size: cover;
 }
 
-.tattoo-thumbnail {
-  max-height: 150px;
-  max-width: 200px;
-}
-
-.banner-image {
-  padding-top: 15px;
-}
-
 footer {
   background-color: $oil;
   bottom: 0;
@@ -45,6 +36,15 @@ footer {
   position: fixed;
   text-align: center;
   width: 100%;
+}
+
+.tattoo-thumbnail {
+  max-height: 150px;
+  max-width: 200px;
+}
+
+.banner-image {
+  padding-top: 15px;
 }
 
 .section-title {

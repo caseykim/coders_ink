@@ -18,7 +18,8 @@
               <div class="panel">
                 <h5 class="text-center"><%= link_to tattoo.title, tattoo_path(tattoo) %></h5>
                 <% if current_user && current_user.admin? %>
-                  <%= button_to 'Delete', tattoo_path(tattoo), method: :delete, id: "delete-#{tattoo.id}" %>
+                  <%= button_to 'Delete', tattoo_path(tattoo),
+                    method: :delete, id: "delete-#{tattoo.id}", class: "tiny button" %>
                 <% end %>
               </div>
             </div>

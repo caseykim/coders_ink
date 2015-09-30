@@ -11,7 +11,14 @@
         <ul>
           <li><%= link_to user.username, user_path(user) %></li>
           <li><%= user.email %></li>
-          <li><%= button_to 'Delete', user_path(user), method: :delete, id: "#{user.id}" %></li>
+          <li>
+            <%= button_to 'Delete', user_path(user),
+              method: :delete, id: "delete-#{user.id}", class: "tiny button" %>
+          </li>
+          <li>
+            <%= button_to 'Make Admin', user_admin_index_path(user),
+              method: :post, id: "admin-#{user.id}", class: "secondary tiny button" %>
+          </li>
         </ul>
       </div>
     </div>

@@ -7,12 +7,12 @@
         <div class="large-12 columns">
           <div class="row">
             <% @tattoos.each do |tattoo| %>
-            <div class="large-4 small-6 columns">
+            <div class="large-4 medium-8 small-12 columns">
               <div class="tattoo-box">
                 <a href="<%= tattoo_path(tattoo) %>"><img class="fillwidth" src="<%= tattoo.url %>"></a>
               </div>
               <div class="panel">
-                <h5 class="text-center"><%= link_to tattoo.title, tattoo_path(tattoo) %></h5>
+                <h5 class="tattoo-title text-center"><%= link_to tattoo.title, tattoo_path(tattoo) %></h5>
                 <% if current_user && current_user.admin? %>
                   <%= button_to 'Delete', tattoo_path(tattoo),
                     method: :delete, id: "delete-#{tattoo.id}", class: "tiny button" %>

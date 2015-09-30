@@ -1,8 +1,6 @@
-<h5 class="fixed page-nav"><%= paginate @users %></h5>
 <div class="section-box large-centered small-centered large-2 small-4 columns">
   <h2 class="section-title text-center">Users</h2>
 </div>
-
 <div>
   <% @users.each do |user| %>
     <div class="large-2 medium-4 small-6 columns">
@@ -24,3 +22,6 @@
     </div>
   <% end %>
 </div>
+<footer>
+  <%= paginate @users %>
+</footer>

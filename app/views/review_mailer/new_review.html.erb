@@ -1,0 +1,11 @@
+<p>Hello <%= @review.tattoo.user.username %>!</p>
+
+<p>
+  <%= @review.user.username %> has left a new review for
+    your tattoo, <%= @review.tattoo.title %>.
+</p>
+<p>"<%= @review.body %>"</p>
+
+<p><%= link_to 'View the rating on my tattoo page', tattoo_url(@review.tattoo) %></p>
+
+<p>Peace!</p>

@@ -24,11 +24,6 @@
         </div>
       </div>
   </div>
-  <% unless @tattoos.current_page == @tattoos.total_pages %>
-    <p id="view-more">
-      <%= link_to('View More', url_for(page: @tattoos.current_page + 1)) %>
-    </p>
-  <% end %>
 </div>
 <footer>
   <%= paginate @tattoos %>

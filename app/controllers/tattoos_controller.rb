@@ -12,7 +12,7 @@ class TattoosController < ApplicationController
         if current_user
           admin = current_user.admin?
         end
-        render :json => { tattoos: @tattoos, admin: admin }
+        render json: { tattoos: @tattoos, admin: admin }
       end
     end
   end

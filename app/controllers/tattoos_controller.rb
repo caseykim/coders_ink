@@ -5,6 +5,16 @@ class TattoosController < ApplicationController
     else
       @tattoos = Tattoo.order(id: :desc).page params[:page]
     end
+    respond_to do |format|
+      format.html
+      format.json do
+        @tattoos = Tattoo.order(id: :desc).page params[:page]
+        if current_user
+          admin = current_user.admin?
+        end
+        render json: { tattoos: @tattoos, admin: admin }
+      end
+    end
   end
 
   def show

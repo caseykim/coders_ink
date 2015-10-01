@@ -63,6 +63,25 @@ footer {
   padding: 10px;
 }
 
+.splash-title {
+  font-family: 'Miltonian Tattoo', cursive;
+  margin: 0;
+  text-align: center;
+}
+
+.splash-body {
+  font-family: 'Miltonian Tattoo', cursive;
+  text-align: center;
+
+  a {
+    color: black;
+  }
+
+  a:hover {
+    color: darken(blue, 30%);
+  }
+}
+
 .form-background {
   background-color: $white;
   margin: 10px;

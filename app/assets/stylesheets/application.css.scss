@@ -65,18 +65,22 @@ footer {
 
 .splash-title {
   font-family: 'Miltonian Tattoo', cursive;
+  margin: 0;
   text-align: center;
-  margin: 0px;
 }
 
 .splash-body {
   font-family: 'Miltonian Tattoo', cursive;
   text-align: center;
   a {
-    color: black;
+
+    color: #000000;
+
   }
   a:hover {
-    color: darken(blue, 30%)
+
+    color: darken(#0000ff, 30%);
+
   }
 }
 

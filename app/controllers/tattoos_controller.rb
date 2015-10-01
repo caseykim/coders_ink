@@ -71,6 +71,22 @@ class TattoosController < ApplicationController
     end
   end
 
+  def favorite
+    @tattoo = Tattoo.find(params[:tattoo_id])
+    @favorite = Favorite.new(user: current_user, tattoo: @tattoo)
+    @favorite.user = current_user
+    favorite = Favorite.find_by(user: current_user, tattoo: @tattoo)
+    if favorite
+      favorite.destroy
+      flash[:notice] = "Tattoo removed from your favorites."
+    elsif @favorite.save
+      flash[:notice] = "Tattoo added to your favorites."
+    else
+      flash[:errors] = @favorite.errors.full_messages.join(", ")
+    end
+    redirect_to tattoo_path(@tattoo)
+  end
+
   protected
 
   def tattoo_params

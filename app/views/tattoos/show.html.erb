@@ -5,6 +5,9 @@
   </br>
   <%= image_tag(@tattoo.url, class: "tattoo_image large-centered small-centered") %>
   <br>
+  <% unless @tattoo.user == current_user %>
+    <%= button_to 'Favorite', tattoo_favorite_path(@tattoo) %>
+  <% end %>
   <% if @tattoo.description.present? %>
     <h3 class="text-center"><%= @tattoo.description %></h3>
   <% end %>

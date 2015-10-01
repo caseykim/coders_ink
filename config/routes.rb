@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :tattoos, only: [:show] do
-      post 'favorite'
+    post 'favorite'
   end
 
   resources :reviews, only: [:show] do

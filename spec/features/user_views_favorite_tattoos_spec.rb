@@ -6,10 +6,39 @@ I want to view a list of my favorite tattoos
 So that I can see all of them at once
 
   Acceptance Criteria
-  [ ] I must be logged in to view my favorites
-  [ ] I must visit my user details page
-  [ ] I must click on a button to remove the tattoo from favorites
-  [ ] Only admins or I can see my favorite tattoos
+  [x] I must be logged in to view my favorites
+  [x] I must be able to access my favorites wherever I am on the site
+  [x] I must be able to view the favorites by clicking the favorites link
+  [x] I must see my favorite tattoos on my favorites show page
 ) do
 
+  context 'user views their favorite list' do
+    let!(:user1) { FactoryGirl.create(:user) }
+    let!(:user2) { FactoryGirl.create(:user) }
+    let!(:t1) { FactoryGirl.create(:tattoo, user: user1) }
+    let!(:t2) { FactoryGirl.create(:tattoo, user: user2) }
+    let!(:t3) { FactoryGirl.create(:tattoo) }
+    let!(:favorite1) { FactoryGirl.create(:favorite, user: user2, tattoo: t2) }
+    let!(:favorite2) { FactoryGirl.create(:favorite, user: user1, tattoo: t3) }
+    let!(:favorite3) { FactoryGirl.create(:favorite, user: user1, tattoo: t2) }
+    let!(:favorite4) { FactoryGirl.create(:favorite, user: user2, tattoo: t3) }
+
+    scenario 'user views favorites page' do
+      login(user1)
+      visit tattoos_path
+
+      click_link 'Favorites'
+
+      expect(page).to have_content("Favorite Tattoos")
+      url = user1.favorites.first.tattoo.url
+      expect(page).to have_content(user1.favorites.first.tattoo.title)
+      expect(page).to have_content(user1.favorites.last.tattoo.title)
+      expect(page).to have_css("img[src*='#{url}']")
+    end
+
+    scenario 'user tries to visit favorites before logging in' do
+      visit tattoos_path
+      expect(page).to_not have_content('Favorites')
+    end
+  end
 end

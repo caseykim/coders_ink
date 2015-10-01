@@ -12,10 +12,17 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
+  resources :tattoos, only: [:show] do
+      post 'favorite'
+  end
+
   resources :reviews, only: [:show] do
     post 'upvote'
     post 'downvote'
   end
 
   resources :reviews, only: [:edit, :update, :destroy]
+
+  resources :favorites, only: [:index, :new, :create, :destroy]
+
 end

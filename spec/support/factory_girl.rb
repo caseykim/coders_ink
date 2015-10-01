@@ -17,8 +17,8 @@ FactoryGirl.define do
 
     factory :user_with_favorites do
       after(:create) do |user|
-        5.times { create(:tattoo, user: user_with_tattoos) }
-        5.times { create(:review, user: user, tattoo: tattoo)}
+        5.times { create(:tattoo, user: user) }
+        5.times { create(:favorite, user: user, tattoo: tattoo)}
       end
     end
   end

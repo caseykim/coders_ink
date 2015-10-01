@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'tattoos#index'
+  root 'homes#index'
   devise_for :users, controllers: { registrations: :registrations }
 
   resources :users, only: [:index, :show, :destroy] do
@@ -25,4 +25,5 @@ Rails.application.routes.draw do
 
   resources :favorites, only: [:index, :new, :create, :destroy]
 
+  resources :homes, only: :index
 end

@@ -42,7 +42,7 @@ feature "User views all tattoos", %(
     expect(page).to_not have_content("Tattoo1")
     expect(page).to_not have_content("Tattoo2")
 
-    visit '/?page=2'
+    visit 'tattoos/?page=2'
     expect(page).to have_content("Tattoo1")
     expect(page).to have_content("Tattoo2")
     expect(page).to_not have_content("Tattoo4")

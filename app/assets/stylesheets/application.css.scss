@@ -43,6 +43,11 @@ footer {
   max-width: 200px;
 }
 
+.upvote,
+.downvote {
+  min-width: 20px;
+}
+
 .banner-image {
   padding-top: 15px;
 }
@@ -56,6 +61,25 @@ footer {
   border: 1px solid $black;
   margin: 5px;
   padding: 10px;
+}
+
+.splash-title {
+  font-family: 'Miltonian Tattoo', cursive;
+  margin: 0;
+  text-align: center;
+}
+
+.splash-body {
+  font-family: 'Miltonian Tattoo', cursive;
+  text-align: center;
+
+  a {
+    color: black;
+  }
+
+  a:hover {
+    color: darken(blue, 30%);
+  }
 }
 
 .form-background {
@@ -75,6 +99,7 @@ footer {
   padding-bottom: 30px;
   padding-top: 30px;
   width: 75%;
+  max-width: 1000px;
 }
 
 .user-profile {

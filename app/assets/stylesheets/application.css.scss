@@ -72,11 +72,13 @@ footer {
 .splash-body {
   font-family: 'Miltonian Tattoo', cursive;
   text-align: center;
+
   a {
     color: black;
   }
+
   a:hover {
-    color: darken(blue, 30%)
+    color: darken(blue, 30%);
   }
 }
 

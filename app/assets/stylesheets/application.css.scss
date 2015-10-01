@@ -46,6 +46,22 @@ footer {
 .upvote,
 .downvote {
   min-width: 20px;
+  max-width: 30px;
+}
+
+.favorite-button {
+  margin-top: 10px;
+}
+
+.no-review-box {
+  border-radius: 25px;
+  text-align: center;
+}
+
+.no-review-headline {
+  font-size: 14pt;
+  font-family: 'Arial', 'Verdana', sans-serif;
+  font-weight: bold;
 }
 
 .banner-image {
@@ -63,10 +79,18 @@ footer {
   padding: 10px;
 }
 
+.review-box {
+  border-radius: 25px;
+}
+
 .splash-title {
   font-family: 'Miltonian Tattoo', cursive;
   margin: 0;
   text-align: center;
+}
+
+.tattoo-title {
+  border-radius: 25px;
 }
 
 .splash-body {
@@ -129,6 +153,10 @@ footer {
   background-color: rgb(32, 32, 32);
   margin: auto;
   text-align: center;
+}
+
+.tattoo-form {
+  background-color: rgb(209, 188, 163);
 }
 
 .fillwidth {

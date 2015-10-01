@@ -52,7 +52,7 @@ feature 'Admin deletes a tattoo posting', %(
       to change(Tattoo, :count).by(-1)
     expect(page).to have_content('Tattoo deleted successfully.')
     Tattoo.all.each do |tattoo|
-      expect(page).to have_content(tattoo.title)
+      expect(page).to have_content(last_tattoo.user.username)
     end
   end
 end

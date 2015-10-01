@@ -1,12 +1,12 @@
 <div class="section-box panel large-centered small-centered
- large-4 medium-6 small-8 columns">
+ large-6 medium-8 small-10 columns">
   <h1 class="section-title text-center"><%= @tattoo.title %></h1>
   <h5 class="text-center">Posted by: <%= link_to @tattoo.user.username, user_path(@tattoo.user) %></h5>
   </br>
-  <%= image_tag(@tattoo.url, class: "tattoo_image large-centered small-centered") %>
+  <%= image_tag(@tattoo.url, class: "tattoo_image large-centered small-centered columns") %>
   <br>
   <% unless @tattoo.user == current_user %>
-    <%= button_to 'Favorite', tattoo_favorite_path(@tattoo) %>
+    <%= button_to 'Favorite', tattoo_favorite_path(@tattoo), class: "favorite-button button tiny round" %>
   <% end %>
   <% if @tattoo.description.present? %>
     <h3 class="text-center"><%= @tattoo.description %></h3>
@@ -20,10 +20,10 @@
   <% unless @tattoo.reviews.empty? %>
     <h5 class="text-center">Average Rating: <%= @tattoo.average_rating %>/5</h5>
   <% end %>
-    <ul class="button-group even-2">
+    <ul class="button-group round even-2">
       <% if @tattoo.user == current_user %>
         <li><%= link_to 'Edit', edit_tattoo_path(@tattoo), class: "button tiny" %></li>
-        <li><%= button_to 'Delete', @tattoo, method: :delete,
+        <li><%= link_to 'Delete', @tattoo, method: :delete,
           class: "button tiny alert" %></li>
       <% elsif current_user && current_user.admin? %>
         <li><%= button_to 'Delete', @tattoo, method: :delete,
@@ -32,21 +32,21 @@
     </ul>
 </div>
 
-<div class="reviews_list large-6 medium-8 small-12 large-centered small-centered columns">
+<div class="reviews_list large-centered small-centered columns">
   <% if @tattoo.reviews.empty? %>
-    <div class="panel">
+    <div class="no-review-box large-4 small-8 large-centered small-centered columns panel">
       <% if @tattoo.user == current_user %>
-        <h6>No one has reviewed your tattoo yet!</h6>
+        <h6 class="no-review-headline">No one has reviewed your tattoo yet!</h6>
       <% else %>
-        <h6>No reviews yet, add one?</h6>
+        <h6 class="no-review-headline">No reviews yet, add one?</h6>
       <% end %>
     </div>
   <% else %>
-    <table>
+    <table class="review-box large-6 small-10 large-centered small-centered columns">
       <% @reviews.each do |review| %>
         <tr id="<%= review.id %>">
           <td>
-            <%=link_to image_tag("/thumbup.png", class: "upvote"),"#"%>
+            <%=link_to image_tag("/thumbup.jpg", class: "upvote"),"#"%>
           </td>
           <td id ="score" class=<%="score_#{review.id}"%>><%= review.score %></td>
           <td><%=link_to image_tag("/thumbdown.png", class: "downvote"),"#"%>
@@ -55,8 +55,8 @@
           <td><%= review.body %></td>
           <td>Review by: <%= review.user.username %></td>
           <% if review.user == current_user %>
-            <td><%= link_to 'Edit Review', edit_review_path(review), class: "edit_review" %></td>
-            <td><%= button_to 'Delete Review', review, method: :delete, class: "delete_review" %></td>
+            <td><%= link_to 'Edit Review', edit_review_path(review), class: "button tiny round" %></td>
+            <td><%= button_to 'Delete Review', review, method: :delete, class: "button tiny round alert" %></td>
           <% elsif current_user && current_user.admin? %>
             <td>
               <%= button_to 'Delete Review', review,
@@ -70,7 +70,7 @@
 </div>
 
 <% if @tattoo.user != current_user && signed_in? %>
-  <div class="section-box panel large-6 medium-8 small-12 large-centered small-centered columns">
+  <div class="section-box panel large-8 medium-10 small-12 large-centered small-centered columns">
     <h4>Rate this Ink</h4>
     <div class="review_box small-12">
       <%= form_for([@tattoo, @review]) do |f| %>

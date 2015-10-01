@@ -41,10 +41,12 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "Update", class: "small button right" %>
+          <ul class="right button-group round even-2 large-4 medium-8 small-12 columns">
+            <li><%= link_to "Back", :back, class: "small secondary button" %></li>
+            <li><%= f.submit "Update", class: "small button" %></li>
+          </ul>
         </div>
 
-        <%= link_to "Back", :back, class: "small secondary button right" %>
       <% end %>
 
     </fieldset>

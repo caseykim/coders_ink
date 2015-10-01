@@ -62,7 +62,11 @@ class TattoosController < ApplicationController
     if signed_in? && (current_user == @tattoo.user || current_user.admin?)
       @tattoo.destroy
       flash[:success] = 'Tattoo deleted successfully.'
-      redirect_to tattoos_path
+      if current_user.role == "admin"
+        redirect_to user_path(@tattoo.user)
+      else
+        redirect_to tattoos_path
+      end
     elsif !signed_in?
       authenticate_user!
     else

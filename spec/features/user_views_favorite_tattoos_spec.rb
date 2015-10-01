@@ -15,13 +15,8 @@ So that I can see all of them at once
   context 'user views their favorite list' do
     let!(:user1) { FactoryGirl.create(:user) }
     let!(:user2) { FactoryGirl.create(:user) }
-    let!(:t1) { FactoryGirl.create(:tattoo, user: user1) }
-    let!(:t2) { FactoryGirl.create(:tattoo, user: user2) }
-    let!(:t3) { FactoryGirl.create(:tattoo) }
-    let!(:favorite1) { FactoryGirl.create(:favorite, user: user2, tattoo: t2) }
-    let!(:favorite2) { FactoryGirl.create(:favorite, user: user1, tattoo: t3) }
-    let!(:favorite3) { FactoryGirl.create(:favorite, user: user1, tattoo: t2) }
-    let!(:favorite4) { FactoryGirl.create(:favorite, user: user2, tattoo: t3) }
+    let!(:t1) { FactoryGirl.create(:tattoo, user: user2) }
+    let!(:favorite1) { FactoryGirl.create(:favorite, user: user1, tattoo: t1) }
 
     scenario 'user views favorites page' do
       login(user1)
@@ -32,7 +27,6 @@ So that I can see all of them at once
       expect(page).to have_content("Favorite Tattoos")
       url = user1.favorites.first.tattoo.url
       expect(page).to have_content(user1.favorites.first.tattoo.title)
-      expect(page).to have_content(user1.favorites.last.tattoo.title)
       expect(page).to have_css("img[src*='#{url}']")
     end
 

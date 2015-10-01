@@ -14,15 +14,8 @@ FactoryGirl.define do
         5.times { create(:tattoo, user: user) }
       end
     end
-
-    factory :user_with_favorites do
-      after(:create) do |user|
-        5.times { create(:tattoo, user: user) }
-        5.times { create(:favorite, user: user, tattoo: tattoo)}
-      end
-    end
   end
-
+  
   factory :tattoo do
     sequence(:title) { |n| "Celtic Armband #{n}" }
     description "Great"

@@ -73,14 +73,10 @@ footer {
   font-family: 'Miltonian Tattoo', cursive;
   text-align: center;
   a {
-
-    color: #000000;
-
+    color: black;
   }
   a:hover {
-
-    color: darken(#0000ff, 30%);
-
+    color: darken(blue, 30%)
   }
 }
 

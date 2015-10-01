@@ -43,7 +43,7 @@ feature 'User deletes a tattoo posting', %(
   scenario 'user deletes a tattoo posting from tattoo details page' do
     tattoo = user.tattoos.last
     visit tattoo_path(tattoo)
-    click_button 'Delete'
+    click_on 'Delete'
 
     expect(page).to have_content('Tattoo deleted successfully.')
   end

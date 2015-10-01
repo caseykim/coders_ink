@@ -5,16 +5,16 @@
     </div>
       <div class="row">
         <div class="large-12 columns">
-          <div class="row">
+          <div class="row" id="content">
             <% @tattoos.each do |tattoo| %>
-            <div class="large-4 medium-8 small-12 columns">
+            <div class="large-4 medium-8 small-12 columns end">
               <div class="tattoo-box">
                 <a href="<%= tattoo_path(tattoo) %>"><img class="fillwidth" src="<%= tattoo.url %>"></a>
               </div>
               <div class="panel">
                 <h5 class="tattoo-title text-center"><%= link_to tattoo.title, tattoo_path(tattoo) %></h5>
                 <% if current_user && current_user.admin? %>
-                  <%= button_to 'Delete', tattoo_path(tattoo),
+                  <%= link_to 'Delete', tattoo_path(tattoo),
                     method: :delete, id: "delete-#{tattoo.id}", class: "tiny button" %>
                 <% end %>
               </div>
@@ -24,6 +24,11 @@
         </div>
       </div>
   </div>
+  <% unless @tattoos.current_page == @tattoos.total_pages %>
+    <p id="view-more">
+      <%= link_to('View More', url_for(page: @tattoos.current_page + 1)) %>
+    </p>
+  <% end %>
 </div>
 <footer>
   <%= paginate @tattoos %>

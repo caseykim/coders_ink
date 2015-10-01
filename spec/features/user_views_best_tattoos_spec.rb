@@ -26,7 +26,6 @@ feature "User views the best tattoos", %(
     Review.create(rating: 5, tattoo: t1, user: User.first)
     Review.create(rating: 1, tattoo: t7, user: User.first)
 
-
     visit best_tattoos_path
     expect(page).to have_content("Celtic Armband 10: #{t10.average_rating}")
     expect(page).to have_content("Celtic Armband 9: #{t9.average_rating}")

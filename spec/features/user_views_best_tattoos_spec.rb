@@ -11,27 +11,19 @@ feature "User views the best tattoos", %(
 ) do
 
   scenario 'visitor views best tattoos' do
-    10.times { FactoryGirl.create(:tattoo_with_reviews) }
-
-    t10 = Tattoo.find_by(title: "Celtic Armband 10")
-    t9 = Tattoo.find_by(title: "Celtic Armband 9")
-    t7 = Tattoo.find_by(title: "Celtic Armband 7")
-    t6 = Tattoo.find_by(title: "Celtic Armband 6")
-    t5 = Tattoo.find_by(title: "Celtic Armband 5")
-    t1 = Tattoo.find_by(title: "Celtic Armband 1")
-    Review.create(rating: 5, tattoo: t10, user: User.first)
-    Review.create(rating: 5, tattoo: t9, user: User.first)
-    Review.create(rating: 5, tattoo: t6, user: User.first)
-    Review.create(rating: 5, tattoo: t5, user: User.first)
-    Review.create(rating: 5, tattoo: t1, user: User.first)
-    Review.create(rating: 1, tattoo: t7, user: User.first)
+    t1 = FactoryGirl.create(:tattoo_with_reviews)
+    t2 = FactoryGirl.create(:tattoo_with_reviews)
+    t3 = FactoryGirl.create(:tattoo_with_reviews)
+    t4 = FactoryGirl.create(:tattoo_with_reviews)
+    t5 = FactoryGirl.create(:tattoo_with_reviews)
+    t6 = FactoryGirl.create(:tattoo)
 
     visit best_tattoos_path
-    expect(page).to have_content("Celtic Armband 10: #{t10.average_rating}")
-    expect(page).to have_content("Celtic Armband 9: #{t9.average_rating}")
-    expect(page).to have_content("Celtic Armband 6: #{t6.average_rating}")
-    expect(page).to have_content("Celtic Armband 5: #{t5.average_rating}")
-    expect(page).to have_content("Celtic Armband 1: #{t1.average_rating}")
-    expect(page).to_not have_content("Celtic Armband 7: #{t7.average_rating}")
+    expect(page).to have_content("#{t1.title}: #{t1.average_rating}")
+    expect(page).to have_content("#{t2.title}: #{t2.average_rating}")
+    expect(page).to have_content("#{t3.title}: #{t3.average_rating}")
+    expect(page).to have_content("#{t4.title}: #{t4.average_rating}")
+    expect(page).to have_content("#{t5.title}: #{t5.average_rating}")
+    expect(page).to_not have_content("#{t6.title}: #{t6.average_rating}")
   end
 end

@@ -15,7 +15,7 @@ FactoryGirl.define do
       end
     end
   end
-  
+
   factory :tattoo do
     sequence(:title) { |n| "Celtic Armband #{n}" }
     description "Great"

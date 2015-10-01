@@ -37,4 +37,9 @@ FactoryGirl.define do
     user
     tattoo
   end
+
+  factory :favorite do
+    user
+    tattoo
+  end
 end

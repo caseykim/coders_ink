@@ -21,6 +21,7 @@
           <% end %>
           <li><%= link_to "Hall of Fame", best_tattoos_path %></li>
           <li><%= link_to "Add A Tattoo", new_tattoo_path %></li>
+          <li><%= link_to "Favorites", favorites_path %></li>
           <li><%= link_to 'Account Settings', edit_user_registration_path %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>

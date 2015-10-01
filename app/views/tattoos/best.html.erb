@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="large-12 columns">
+    <div class="panel small-8 large-centered small-centered columns">
+      <h1 class="splash-body">Top 5 Tattoos of All Time!</h1>
+    </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+            <% @top_5.each do |tattoo| %>
+            <div class="large-4 medium-8 small-12 columns">
+              <div class="tattoo-box">
+                <a href="<%= tattoo_path(tattoo) %>"><img class="fillwidth" src="<%= tattoo.url %>"></a>
+              </div>
+              <div class="panel">
+                <h5 class="tattoo-title text-center"><%= link_to "#{tattoo.title}: #{tattoo.average_rating}/5", tattoo_path(tattoo) %></h5>
+                <% if current_user && current_user.admin? %>
+                  <%= button_to 'Delete', tattoo_path(tattoo),
+                    method: :delete, id: "delete-#{tattoo.id}", class: "tiny button" %>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

@@ -19,7 +19,7 @@ feature 'User deletes a tattoo posting', %(
       tattoo = user.tattoos.first
       visit tattoo_path(tattoo)
 
-      expect(page).to_not have_button('Delete')
+      expect(page).to_not have_link('Delete')
     end
   end
 
@@ -37,19 +37,19 @@ feature 'User deletes a tattoo posting', %(
     tattoo = another_user.tattoos.first
     visit tattoo_path(tattoo)
 
-    expect(page).to_not have_button('Delete')
+    expect(page).to_not have_link('Delete')
   end
 
   scenario 'user deletes a tattoo posting from tattoo details page' do
     tattoo = user.tattoos.last
     visit tattoo_path(tattoo)
-    click_button 'Delete'
+    click_link 'Delete'
 
     expect(page).to have_content('Tattoo deleted successfully.')
   end
 
   scenario 'user deletes a tattoo posting from my profile page' do
-    id_css = "##{user.tattoos.last.id}"
+    id_css = "#delete-#{user.tattoos.first.id}"
     visit user_path(user)
     find(id_css, 'Delete').click
 

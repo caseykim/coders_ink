@@ -14,6 +14,7 @@ feature "User views user detail page", %(
   let(:user) { FactoryGirl.create(:user_with_tattoos) }
 
   scenario "user sees the user's detailed information" do
+    login(user)
     visit user_path(user)
 
     expect(page).to have_content(user.username)
@@ -23,6 +24,7 @@ feature "User views user detail page", %(
 
   scenario "user does not see other user's information" do
     another_user = FactoryGirl.create(:user)
+    login(user)
     visit user_path(user)
 
     expect(page).to_not have_content(another_user.username)
@@ -30,12 +32,14 @@ feature "User views user detail page", %(
   end
 
   scenario "user sees all tattoo postings by the user" do
+    login(user)
     visit user_path(user)
     expect(page).to have_content(user.tattoos.first.title)
     expect(page).to have_css("img[src*='#{user.tattoos.last.url}']")
   end
 
   scenario "user does not see other user's tattoo posting" do
+    login(user)
     another_user = FactoryGirl.create(:user_with_tattoos)
     visit user_path(user)
 

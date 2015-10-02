@@ -43,6 +43,11 @@ footer {
   max-width: 200px;
 }
 
+.tattoo-thumbnail-smaller {
+  max-height: 50px;
+  max-width: 100px;
+}
+
 .upvote,
 .downvote {
   min-width: 20px;
@@ -182,7 +187,7 @@ footer {
   a {
     color: $black;
   }
-  
+
   a:hover {
     color: lighten($black, 20%);
   }

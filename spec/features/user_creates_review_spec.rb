@@ -38,7 +38,7 @@ So that I can share my stupid opinion with the world
     end
 
     scenario "user reviews a tattoo" do
-      fill_in "Rating", with: 4
+      choose "4"
       fill_in "Review", with: "Not too shabby"
       click_button "Submit"
       expect(page).to have_content("Celtic Armband")
@@ -61,11 +61,11 @@ So that I can share my stupid opinion with the world
     end
 
     scenario "user tries to review a tattoo twice" do
-      fill_in "Rating", with: 4
+      choose "4"
       fill_in "Review", with: "Not too shabby"
       click_button "Submit"
 
-      fill_in "Rating", with: 5
+      choose "5"
       fill_in "Review", with: "WOW"
       click_button "Submit"
 

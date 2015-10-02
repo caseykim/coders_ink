@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
     elsif !signed_in?
       authenticate_user!
     else
-      flash[:notice] = 'You have no permission to edit this posting'
+      flash[:error] = 'You have no permission to edit this posting'
       redirect_to tattoo_path(tattoo)
     end
   end
@@ -32,10 +32,10 @@ class ReviewsController < ApplicationController
     if !signed_in?
       authenticate_user!
     elsif @review.update_attributes(review_params)
-      flash[:notice] = 'Review successfully updated.'
+      flash[:success] = 'Review successfully updated.'
       redirect_to tattoo_path(@tattoo)
     else
-      flash[:error] = @review.errors.full_messages.join(", ")
+      flash[:alert] = @review.errors.full_messages.join(", ")
       render :edit
     end
   end
@@ -47,10 +47,10 @@ class ReviewsController < ApplicationController
       authenticate_user!
     elsif signed_in? && (current_user == @review.user || current_user.admin?)
       @review.destroy
-      flash[:notice] = 'Review deleted successfully.'
+      flash[:success] = 'Review deleted successfully.'
       redirect_to tattoo_path(@tattoo)
     else
-      flash[:notice] = 'You have no permission to delete this posting'
+      flash[:alert] = 'You have no permission to delete this posting'
       redirect_to tattoo_path(@tattoo)
     end
   end

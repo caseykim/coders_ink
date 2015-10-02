@@ -76,7 +76,7 @@
       <%= form_for([@tattoo, @review]) do |f| %>
 
         <%= f.label :rating %>
-        <%= f.number_field :rating  %>
+        <%= f.collection_radio_buttons :rating, Review::RATINGS, :to_i, :to_s  %>
 
         <%= f.label :body, "Review" %>
         <%= f.text_area :body %>

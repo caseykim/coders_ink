@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :admin, only: :destroy
 
   resources :tattoos do
+    get 'best', on: :collection
     resources :reviews, only: [:new, :create]
   end
 

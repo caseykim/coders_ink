@@ -5,6 +5,16 @@ class TattoosController < ApplicationController
     else
       @tattoos = Tattoo.order(id: :desc).page params[:page]
     end
+    respond_to do |format|
+      format.html
+      format.json do
+        @tattoos = Tattoo.order(id: :desc).page params[:page]
+        if current_user
+          admin = current_user.admin?
+        end
+        render json: { tattoos: @tattoos, admin: admin }
+      end
+    end
   end
 
   def show
@@ -73,6 +83,12 @@ class TattoosController < ApplicationController
       flash[:alert] = 'You have no permission to delete this posting'
       redirect_to tattoo_path(@tattoo)
     end
+  end
+
+  def best
+    best_tattoos = Tattoo.all.to_a
+    best_tattoos.sort! { |a, b| a.average_rating <=> b.average_rating }.reverse
+    @top_5 = [best_tattoos[-1], best_tattoos[-2], best_tattoos[-3], best_tattoos[-4], best_tattoos[-5]]
   end
 
   def favorite

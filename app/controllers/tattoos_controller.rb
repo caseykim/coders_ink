@@ -88,7 +88,7 @@ class TattoosController < ApplicationController
   def best
     best_tattoos = Tattoo.all.to_a
     best_tattoos.sort! { |a, b| a.average_rating <=> b.average_rating }.reverse
-    @top_5 = [best_tattoos[-1], best_tattoos[-2], best_tattoos[-3], best_tattoos[-4], best_tattoos[-5]]
+    @top_6 = [best_tattoos[-1], best_tattoos[-2], best_tattoos[-3], best_tattoos[-4], best_tattoos[-5], best_tattoos[-6]]
   end
 
   def favorite

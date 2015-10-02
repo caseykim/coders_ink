@@ -176,3 +176,15 @@ footer {
   margin: auto;
   text-align: center;
 }
+
+.posted-by {
+
+  a {
+    color: $black;
+  }
+  
+  a:hover {
+    color: lighten($black, 20%);
+  }
+
+}

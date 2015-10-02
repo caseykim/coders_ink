@@ -180,10 +180,11 @@ footer {
 .posted-by {
 
   a {
-    color: black;
+    color: $black;
   }
+  
   a:hover {
-    color: lighten(black, 20%);
+    color: lighten($black, 20%);
   }
 
 }

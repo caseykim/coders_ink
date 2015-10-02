@@ -15,7 +15,9 @@ $(window).scroll(function() {
       $.get('/tattoos.json?page=' + parseInt(page), function(data) {
         var tattoos = data.tattoos;
         tattoos.forEach(function(tattoo) {
-          var $divContainer = $('<div>').addClass('large-4 medium-8 small-12 columns end');
+          var cssClass = 'large-4 medium-6 small-12 ';
+          var centerClass = 'large-uncentered small-centered columns';
+          var $divContainer = $('<div>').addClass(cssClass + centerClass);
 
           var $tattooBox = $('<div>').addClass('tattoo-box');
           var $imageLink = $('<a>').attr('href', '/tattoos/' + tattoo.id);

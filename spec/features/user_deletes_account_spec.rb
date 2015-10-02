@@ -14,15 +14,10 @@ feature 'user deletes account', %(
 
   let(:user) { FactoryGirl.create(:user) }
 
-  before do
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-  end
-
   scenario 'user deletes the account' do
-    click_link 'Account Settings'
+    login(user)
+    click_link 'My Profile'
+    click_on 'Account Settings'
     click_button 'Cancel my account'
 
     expect(page).to have_content('account has been successfully cancelled.')
@@ -34,6 +29,7 @@ feature 'user deletes account', %(
   end
 
   scenario 'user cannot access users#delete if not authenticated' do
+    login(user)
     click_link 'Sign Out'
     visit edit_user_registration_path
 

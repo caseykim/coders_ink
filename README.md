@@ -18,16 +18,19 @@ CodersInk is a review website hosted at https://codersink.herokuapp.com/tattoos.
 
 # Features
 
-- The ability to add an item to be reviewed.
-- The ability to rate the item and to optionally comment on it (i.e. write a review).
+- The ability to add a tattoo to be reviewed.
+- The ability to rate the tattoo and to optionally comment on it (i.e. write a review).
+- The ability to designate (and remove) a tattoo as a favorites.  Only the user has access to the user's list of favorite tattoo.
+- An email is sent to the owner of a tattoo when a new review is posted about it.
 - The ability to upvote or downvote a review. A user can only upvote or downvote once and can change their vote from up to down. This feature utilizes AJAX so that a complete page reload isn't necessary.
-- A sign up and authentication system for your users (developed with Devise).
-- An ability to upload a profile photo (developed with Carrierwave).
+- The ability to upload a profile photo (developed with Carrierwave). A default photo is used if the user does not upload one.
 - The ability to search for items.
-- An admin role. Admins are able to delete comments or items if they are deemed to be inappropriate.
-- An email is sent to the owner of an item when a new review is posted about it.
+- A sign up and authentication system for users (developed with Devise).
+- An admin role. Admins are able to delete comments or items if they are deemed to be inappropriate.  Access to some pages are restricted to the admin role.
+- An average review rating (the underlying method, developed using ruby, checks all reviews belonging to the tattoo).
+- A top 6 page featuring the most highly rated tattoos.
 - Pagination (developed with Kaminari).
-- Infinite scroll for the index page (developed with Javascript)
+- Infinite scroll for the index page (developed with Javascript).
 
 # Development
 

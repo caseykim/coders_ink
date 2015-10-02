@@ -16,17 +16,11 @@ feature "user edits account settings", %(
 ) do
 
   let(:user) { FactoryGirl.create(:user) }
-
-  before do
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-  end
+  before { login(user) }
 
   scenario 'user changes password and email' do
-    click_link 'Account Settings'
-    expect(current_path).to eq edit_user_registration_path
+    click_link 'My Profile'
+    click_on 'Account Settings'
 
     new_password = "boogeyman"
     new_email = "boogeyman@gmail.com"
@@ -48,8 +42,8 @@ feature "user edits account settings", %(
   end
 
   scenario 'password and password confirmation have to match to update' do
-    click_link 'Account Settings'
-    expect(current_path).to eq edit_user_registration_path
+    click_link 'My Profile'
+    click_on 'Account Settings'
 
     new_password = "boogeyman"
     fill_in 'Password', with: new_password

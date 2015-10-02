@@ -1,28 +1,21 @@
 <div class="row">
   <div class="large-12 columns">
-    <div class="small-8 large-centered small-centered columns">
-      <img class="panel" src="/banner.png">
-    </div>
-      <div class="row">
-        <div class="large-12 columns">
-          <div class="row" id="content">
-            <% @tattoos.each do |tattoo| %>
-            <div class="large-4 medium-8 small-12 columns end">
-              <div class="tattoo-box">
-                <a href="<%= tattoo_path(tattoo) %>"><img class="fillwidth" src="<%= tattoo.url %>"></a>
-              </div>
-              <div class="panel">
-                <h5 class="tattoo-title text-center"><%= link_to tattoo.title, tattoo_path(tattoo) %></h5>
-                <% if current_user && current_user.admin? %>
-                  <%= link_to 'Delete', tattoo_path(tattoo),
-                    method: :delete, id: "delete-#{tattoo.id}", class: "tiny button" %>
-                <% end %>
-              </div>
-            </div>
-            <% end %>
-          </div>
+    <div class="row" id="content">
+      <% @tattoos.each do |tattoo| %>
+      <div class="large-4 medium-6 small-12 large-uncentered small-centered columns">
+        <div class="tattoo-box">
+          <a href="<%= tattoo_path(tattoo) %>"><img class="fillwidth" src="<%= tattoo.url %>"></a>
+        </div>
+        <div class="panel">
+          <h5 class="tattoo-title text-center"><%= link_to tattoo.title, tattoo_path(tattoo) %></h5>
+          <% if current_user && current_user.admin? %>
+            <%= link_to 'Delete', tattoo_path(tattoo),
+              method: :delete, id: "delete-#{tattoo.id}", class: "tiny button" %>
+          <% end %>
         </div>
       </div>
+      <% end %>
+    </div>
   </div>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 </div>

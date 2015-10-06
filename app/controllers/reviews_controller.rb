@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
     @review = @tattoo.reviews.new(review_params)
     @review.user = current_user
     if @review.save
-      ReviewMailer.new_review(@review).deliver_later
+      # ReviewMailer.new_review(@review).deliver_later
       flash[:notice] = "Review Added Successfully!"
       redirect_to tattoo_path(@tattoo)
     else
